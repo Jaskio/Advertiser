@@ -1,2 +1,2 @@
 
-{!! Html::script('js/main.js') !!}
+{{ Html::script('dist/js/main.js') }}

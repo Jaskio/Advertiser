@@ -14,8 +14,7 @@
     ============================================= -->
 
     <!-- project main css files -->
-    <!--{!! Html::style('css/main.css') !!}-->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{ Html::style('dist/css/main.css') }}
 
     <script>
         window.Laravel = {!! json_encode([

@@ -1,0 +1,1 @@
+{"version":3,"sources":["test.js","testfolder/tsestfile.js"],"names":["console","log"],"mappings":"AAAAA,QAAAC,IAAA,QAEAD,QAAAC,IAAA,SCFAD,QAAAC,IAAA","file":"main.js","sourcesContent":["console.log('test');\r\n\r\nconsole.log('test2');\r\n\r\n","console.log('nesto');\r\n"]}
