@@ -40,22 +40,76 @@ class AccountController extends Controller
         // $users = $this->getUsers();
         // $u = DB::table('users')->where('name', 'like', 'Ja%')->get();
         // $test = DB::table('users')->leftJoin('test', 'users.id', '=', 'test.id')->get();
-        var_dump(Advertisement::find(2)->user);
         // return view('home')->with('users', $u);
     }
 
     /**
-     * Get all user accounts
+     * Show the form for creating a new resource.
      *
-     * Route: account/get
-     *
-     * @return json Array of selected user accounts
+     * @return \Illuminate\Http\Response
      */
-    public function getUsers() {
-        if (Auth::check()) {
-            return response()->json($this->model->get(1), 200);
-        } else {
-            return response()->json('You must be logged in.', 400);
-        }
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $user = $this->model->get($id);
+        
+        return view('account.show')->with('user', $user);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        var_dump($id); die;
+        $this->model->delete($id);
+        return redirect('/');
     }
 }

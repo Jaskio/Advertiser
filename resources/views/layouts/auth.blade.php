@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
-    @include('partials._head')
+    @include('partials.head')
     
     <body>
 
@@ -9,7 +9,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
-        @include('partials._javascript')
+        @include('partials.javascript')
 
     </body>
 </html>

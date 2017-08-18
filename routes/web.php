@@ -22,5 +22,6 @@ Route::group(['middleware' => 'guest'], function() {
 
 
 Route::group(['middleware' => 'auth'], function() {
+    Route::resource('account', 'AccountController');
     //
 });

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
-    @include('partials._head')
+    @include('partials.head')
     
     <body>
 
-        @include('partials._nav')
+        @include('partials.nav')
 
         @yield('content')
 
         <!-- Scripts -->
-        @include('partials._javascript')
+        @include('partials.javascript')
 
     </body>
 </html>
