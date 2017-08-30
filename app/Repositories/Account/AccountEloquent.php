@@ -65,4 +65,14 @@ class AccountEloquent implements IAccount
         //         ->where(Table::USERS . '.id', $id)                    
         //         ->get();
     }
+
+    /**
+     * Update row in user table
+     *
+     * @param array $data Data to update users settings
+     * @return object
+    */
+    public function update($data) {
+        return $this->model->where('id', $data['id'])->update($data);
+    }
 }

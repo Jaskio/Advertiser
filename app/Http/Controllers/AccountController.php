@@ -61,6 +61,11 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->only(['full_name']));
+        dd($this->validate($request, [
+            'full_name' => 'required|max:255'
+            ])
+        );
         //
     }
 
@@ -72,9 +77,7 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        $user = $this->model->get($id);
-        
-        return view('account.show')->with('user', $user);
+        //
     }
 
     /**
@@ -85,6 +88,9 @@ class AccountController extends Controller
      */
     public function edit($id)
     {
+        $user = $this->model->get($id);
+        
+        return view('account.edit')->with('user', $user);
         //
     }
 
@@ -97,7 +103,15 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, $this->model->getModel()::userRules());
+
+        $data = $request->only(['full_name',
+                                'email']);
+        $data['id'] = $id;
+
+        $this->model->update($data);
+
+        return redirect()->back();
     }
 
     /**

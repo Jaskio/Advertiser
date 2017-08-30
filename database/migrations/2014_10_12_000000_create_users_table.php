@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->collation = 'utf8_unicode_ci';
             
             $table->increments('id');
-            $table->string('name');
+            $table->string('full_name');
             $table->string('email')->unique();
             $table->string('password');
             $table->tinyInteger('account_type')->unsigned()->default(1);

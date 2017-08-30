@@ -9,7 +9,7 @@
                 <h2>{{ $ad->price }} $</h2>
                 <h3>{{ $ad->description }}</h3>
                 {{ Form::open(['route' => ['home.show', $ad->id], 'method' => 'GET', 'class'=>'test']) }}
-                    {{ Form::submit('View details') }}
+                    {{ Form::submit(trans('content/home.details_btn')) }}
                 {{ Form::close() }}
             </div>
             <hr>

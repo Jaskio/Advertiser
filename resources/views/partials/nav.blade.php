@@ -9,11 +9,11 @@
                 <h3>{{ Auth::user()->name }}</h3>
                 <ul>
                     <li>
-                        <a href="{{ route('account.show', Auth::user()) }}">@lang('nav.account_settings')</a>
+                        <a href="{{ route('account.edit', Auth::user()) }}">@lang('partials/nav.account_settings')</a>
                     </li>
                     <li>
                         {{ Form::open(['route' => 'logout', 'method' => 'POST']) }}
-                            {{ Form::submit(trans('nav.log_out')) }}
+                            {{ Form::submit(trans('partials/nav.log_out')) }}
                         {{ Form::close() }}
                     </li>
                 </ul>
@@ -21,8 +21,8 @@
          @else
             <div>
                 <div>
-                    <a href="{{ url('login') }}">@lang('nav.sign_in')</a>
-                    <a href="{{ url('register') }}">@lang('nav.register')</a>
+                    <a href="{{ url('login') }}">@lang('partials/nav.sign_in')</a>
+                    <a href="{{ url('register') }}">@lang('partials/nav.register')</a>
                 </div>
             </div>
         @endif

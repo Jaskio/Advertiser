@@ -21,29 +21,29 @@ class UsersSeeder extends Seeder
     private function users() {
         return [
             [
-                'name' => 'Jasmin Bektic',
+                'full_name' => 'Jasmin Bektic',
                 'email' => 'jaskio@gmail.com',
                 'password' => bcrypt('000000'),
                 'account_type' => 0
             ],
             [
-                'name' => 'John Snow',
+                'full_name' => 'John Snow',
                 'email' => 'john.s@gmail.com',
                 'password' => bcrypt('000000'),
                 'account_type' => 1
             ],
             [
-                'name' => 'Margarita Tremlin',
+                'full_name' => 'Margarita Tremlin',
                 'email' => 'margarita.t@gmail.com',
                 'password' => bcrypt('000000'),
                 'account_type' => 1
             ],[
-                'name' => 'Sebastian Pawl',
+                'full_name' => 'Sebastian Pawl',
                 'email' => 'sebastian.p@gmail.com',
                 'password' => bcrypt('000000'),
                 'account_type' => 1
             ],[
-                'name' => 'Tom Taylor',
+                'full_name' => 'Tom Taylor',
                 'email' => 'tom.t@gmail.com',
                 'password' => bcrypt('000000'),
                 'account_type' => 1

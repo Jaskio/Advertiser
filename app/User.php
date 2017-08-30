@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 
+        'full_name', 
         'email', 
         'password'
     ];
@@ -34,6 +34,19 @@ class User extends Authenticatable
         'created_at',
         'token'
     ];
+
+    /**
+     * Get Laravel rules for User model
+     *
+     * @param array $merge
+     * @return array of rules
+    */
+    public static function userRules() {
+        return [
+                'full_name'    => 'required|string|min:5|max:100',
+                'email'        => 'required|email'
+            ];
+    }
 
     /**
      * Defines relation between Advertisement and User  model
