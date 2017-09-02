@@ -43,6 +43,7 @@ class AdvertisementController extends Controller
      */
     public function create()
     {
+        return view('advertisement.create');
         //
     }
 
@@ -54,6 +55,16 @@ class AdvertisementController extends Controller
      */
     public function store(Request $request)
     {
+        // $this->validate($request, $this->model->getModel()::userRules());
+
+        $data = $request->only(['title',
+                                'description',
+                                'price']);
+        $data['user_id'] = Auth::user()->id;
+
+        $this->model->create($data);
+
+        return route('account.edit');
         //
     }
 
@@ -77,6 +88,9 @@ class AdvertisementController extends Controller
      */
     public function edit($id)
     {
+        $ad = $this->model->get($id);
+        
+        return view('advertisement.edit')->with('ad', $ad);
         //
     }
 
@@ -89,6 +103,16 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // $this->validate($request, $this->model->getModel()::userRules());
+
+        $data = $request->only(['title',
+                                'description',
+                                'price']);
+        $data['id'] = $id;
+
+        $this->model->update($data);
+
+        return redirect()->back();
         //
     }
 
@@ -100,8 +124,7 @@ class AdvertisementController extends Controller
      */
     public function destroy($id)
     {
-        var_dump($id); die;
         $this->model->delete($id);
-        return redirect('/');
+        return redirect()->back();
     }
 }

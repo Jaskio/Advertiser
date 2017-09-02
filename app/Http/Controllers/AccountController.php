@@ -50,6 +50,7 @@ class AccountController extends Controller
      */
     public function create()
     {
+        dd('create account');
         //
     }
 

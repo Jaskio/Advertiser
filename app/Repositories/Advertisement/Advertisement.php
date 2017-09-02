@@ -4,6 +4,7 @@ namespace App\Repositories\Advertisement;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\User;
 
 class Advertisement extends Model
 {
@@ -15,7 +16,10 @@ class Advertisement extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'price', 'img_path'
+        'title',
+        'description',
+        'price',
+        'img_path'
     ];
 
     /**
@@ -24,6 +28,17 @@ class Advertisement extends Model
      * @var array
      */
     protected $hidden = [
-        'updated_at', 'deleted_at'
+        'updated_at',
+        'deleted_at',
+        'created_at'
     ];
+
+    /**
+     * Defines relation between Advertisement and User model
+     *
+     * @return model   App\Repositories\User\User
+    */
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

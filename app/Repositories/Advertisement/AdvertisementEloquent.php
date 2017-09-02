@@ -39,7 +39,7 @@ class AdvertisementEloquent extends EloquentCrud implements IAdvertisement
     */
     public function get($id = NULL) {
         if ($id) {
-            return $this->model->find($id);
+            return $this->model->with('user')->findOrFail($id);
         } else {
             return $this->model->all();
         }
