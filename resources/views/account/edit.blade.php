@@ -21,6 +21,7 @@
                     <h2>{{ $ad->price }} $</h2>
                     <h3>{{ $ad->description }}</h3>
 
+                    <a href="{{ route('advertisement.show', $ad->id) }}">show</a>
                     <a href="{{ route('advertisement.edit', $ad->id) }}">edit</a>
                     {{ Form::button('delete', ['type' => 'submit']) }}
 

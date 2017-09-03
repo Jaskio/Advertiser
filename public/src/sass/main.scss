@@ -1,16 +1,22 @@
 // import google fonts
-@import url(http://fonts.googleapis.com/css?family=Dosis:300,700|Ubuntu+Mono|Lato:300,400,700,300italic,400italic&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,300italic,400italic&subset=latin,latin-ext);
 
 // inc
 @import "inc/reset";
+@import "inc/variables";
 @import "inc/mixins";
 @import "inc/colors";
-@import "inc/variables";
 
 // Sections
 @import "sections/header";
 @import "sections/content";
+@import "sections/sidebar";
+@import "sections/footer";
 
 // Components
 @import "components/buttons";
+
+// Shared
+@import "shared/global";
+@import "shared/animations";
 

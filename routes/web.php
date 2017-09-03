@@ -13,23 +13,16 @@
 
 Auth::routes();
 
-// Route::resource('home', 'AdvertisementController');
 Route::get('home', 'AdvertisementController@index');
-// Route::get('advertisement/{id}', 'AdvertisementController@show')->name('advertisement.show');
-Route::resource('home', 'AdvertisementController', ['only' => [
-    'index', 'show'
-]]);
+// Route::resource('advertisement', 'AdvertisementController', ['only' => [
+//     'show'
+// ]]);
+Route::get('advertisement/{id}', 'AdvertisementController@show')->where('id', '[0-9]+');
 
-
-Route::group(['middleware' => 'guest'], function() {
-    //
-});
 
 
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('account', 'AccountController');
 
-    Route::resource('advertisement', 'AdvertisementController'); 
-    // Route::delete('advertisement/{advertisement}', 'AdvertisementController@destroy')->name('advertisement.destroy');  
-    //
+    Route::resource('advertisement', 'AdvertisementController');
 });

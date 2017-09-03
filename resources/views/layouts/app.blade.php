@@ -4,10 +4,23 @@
     @include('partials.head')
     
     <body>
+        <nav class="navbar">
+            @include('partials.nav')
+        </nav>
 
-        @include('partials.nav')
+        <div class="mainContainer">
+            <aside class="sidebar">
+                @include('partials.sidebar')
+            </aside>
 
-        @yield('content')
+            <section class="content">
+                @yield('content')
+            </section>
+        </div>
+
+        <footer class="footer">
+            @include('partials.footer')
+        </footer>
 
         <!-- Scripts -->
         @include('partials.javascript')

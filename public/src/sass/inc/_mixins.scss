@@ -1,0 +1,11 @@
+// clear margin & padding
+@mixin clear-margin {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin vertical-align($position:'absolute') {
+    position: unquote($position);
+    top: 50%;
+    transform: translateY(-50%);
+}

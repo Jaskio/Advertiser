@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\Advertisement\IAdvertisement;
+use App\Repositories\Account\AccountEloquent;
 use App\User;
+use Auth;
 
 class AdvertisementController extends Controller
 {
@@ -57,15 +59,19 @@ class AdvertisementController extends Controller
     {
         // $this->validate($request, $this->model->getModel()::userRules());
 
+        $id = Auth::user()->id;
+
         $data = $request->only(['title',
                                 'description',
-                                'price']);
-        $data['user_id'] = Auth::user()->id;
+                                'price',
+                                'img_path']);
+        $data['user_id'] = $id;
 
         $this->model->create($data);
 
-        return route('account.edit');
-        //
+        // $user = new AccountEloquent(new User);
+        // dd(json_encode($user->get($id)));
+        // return route('account.edit')->with('user', $user->get($id));
     }
 
     /**

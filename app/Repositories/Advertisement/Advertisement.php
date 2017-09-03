@@ -19,7 +19,8 @@ class Advertisement extends Model
         'title',
         'description',
         'price',
-        'img_path'
+        'img_path',
+        'user_id'
     ];
 
     /**
