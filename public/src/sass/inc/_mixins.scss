@@ -4,8 +4,24 @@
   padding: 0;
 }
 
+// vertical alignment
 @mixin vertical-align($position:'absolute') {
     position: unquote($position);
     top: 50%;
     transform: translateY(-50%);
+}
+
+// arrow with adjustable direction
+@mixin arrow($size, $color, $direction) {
+    width: 0;
+    height: 0;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+
+    @if $direction == 'top' {
+        border-top: $size solid $color;
+    } 
+    @if $direction == 'bottom' {
+        border-bottom: $size solid $color;
+    } 
 }

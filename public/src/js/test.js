@@ -1,4 +1,5 @@
-console.log('test');
+var $ = require('jQuery');
 
-console.log('test2');
-
+$( document ).ready(function() {
+    console.log('test');
+});

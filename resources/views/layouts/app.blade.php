@@ -4,9 +4,9 @@
     @include('partials.head')
     
     <body>
-        <nav class="navbar">
+        <header class="header">
             @include('partials.nav')
-        </nav>
+        </header>
 
         <div class="mainContainer">
             <aside class="sidebar">

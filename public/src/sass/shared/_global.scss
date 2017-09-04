@@ -4,4 +4,6 @@ body {
     font-weight: $font-weight-normal;
     background-color: $content-bg;
     color: $font-color;
+    box-sizing: border-box;
+    overflow: hidden;
 }

@@ -1,0 +1,62 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $header-bg;
+    min-height: 60px;
+
+    &Logo {
+        position: relative;
+        left: 20px;
+        & img {
+            height: 40px;
+        }
+    }
+
+    &Content {
+        position: relative;
+        right: 20px;
+    }
+
+    &Profile {
+        &__profile {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        &__image {
+            margin-right: 10px;
+            & img {
+                width: 38px;
+            }
+        }
+        &__name {
+            margin-right: 10px;
+        }
+        &__navArrow {
+            @include arrow(5px, $font-color-white, top);
+        }
+        &__list {
+            position: absolute;
+            right: 0;
+            margin-top: 8px;
+            border: 1px solid darken($content-bg, 10%);
+            background: $content-bg;
+            &Arrow {
+                position: absolute;
+                right: 10px;
+                top: -8px;
+                @include arrow(7px, $content-bg, bottom);
+            }
+            &Items {
+                & li {
+                    padding: 8px;
+                    border-bottom: 1px solid darken($content-bg, 12%);
+                    & a {
+                        color: $font-color;
+                    }
+                }
+            }
+        }
+    }
+}

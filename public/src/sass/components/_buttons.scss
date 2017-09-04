@@ -1,0 +1,13 @@
+.button {
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.logoutButton {
+    @extend .button;
+    font-size: $font-size-base;
+    color: $font-color;
+}
