@@ -42,6 +42,7 @@
             margin-top: 8px;
             border: 1px solid darken($content-bg, 10%);
             background: $content-bg;
+            z-index: 999;
             &Arrow {
                 position: absolute;
                 right: 10px;
@@ -57,6 +58,16 @@
                     }
                 }
             }
+        }
+    }
+
+    &Login {
+        & a {
+            color: $font-color-white;
+        }
+        & span {
+            color: lighten($header-bg, 15%);
+            margin: 0 3px 0 3px;
         }
     }
 }

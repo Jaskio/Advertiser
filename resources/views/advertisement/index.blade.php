@@ -1,16 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="advertList">
 
         @foreach ($ads as $ad)
-            <div>
-                <h1>{{ $ad->title }}</h1> 
-                <h2>{{ $ad->price }} $</h2>
-                <h3>{{ $ad->description }}</h3>
-                <a href="{{ route('advertisement.show', $ad->id) }}">@lang('forms.details_btn')</a>
+        
+            <div class="advertList__item">
+                <div class="advertList__itemImage">
+                    <img src="{{ asset($ad->img_path) }}" alt="advert-img">
+                </div>
+                <div class="advertList__itemInfo">
+                    <h2>{{ $ad->title }}</h2> 
+                    <div class="advertList__itemInfoPrice">{{ $ad->price }} $</div>
+                </div>
+                <a href="{{ route('advertisement.show', $ad->id) }}"></a>
             </div>
-            <hr>
         @endforeach
         
     </div>

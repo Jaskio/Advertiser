@@ -6,7 +6,7 @@
         <div class="headerProfile">
             <div class="headerProfile__profile">
                 <div class="headerProfile__image">
-                    <img src="{{ url('/') . Auth::user()->avatar_path }}" alt="avatar">
+                    <img src="{{ asset(Auth::user()->avatar_path) }}" alt="avatar">
                 </div>
                 <div class="headerProfile__name">
                     {{ Auth::user()->full_name }}
@@ -30,6 +30,7 @@
     @else
         <div class="headerLogin">
             <a href="{{ route('login') }}">@lang('partials/nav.sign_in')</a>
+            <span>|</span>
             <a href="{{ route('register') }}">@lang('partials/nav.register')</a>
         </div>
     @endif

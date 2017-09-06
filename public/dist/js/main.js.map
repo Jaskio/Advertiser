@@ -1,1 +1,1 @@
-{"version":3,"sources":["test.js"],"names":["$","require","document","ready","console","log"],"mappings":"AAAA,GAAAA,GAAAC,QAAA,SAEAD,GAAAE,UAAAC,MAAA,WACAC,QAAAC,IAAA","file":"main.js","sourcesContent":["var $ = require('jQuery');\r\n\r\n$( document ).ready(function() {\r\n    console.log('test');\r\n});"]}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"main.js","sourcesContent":[]}
