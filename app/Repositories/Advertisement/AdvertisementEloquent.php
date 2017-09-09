@@ -41,7 +41,7 @@ class AdvertisementEloquent extends EloquentCrud implements IAdvertisement
         if ($id) {
             return $this->model->with('user')->findOrFail($id);
         } else {
-            return $this->model->all();
+            return $this->model->paginate(4);
         }
     }
 

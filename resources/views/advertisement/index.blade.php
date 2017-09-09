@@ -4,7 +4,6 @@
     <div class="advertList">
 
         @foreach ($ads as $ad)
-        
             <div class="advertList__item">
                 <div class="advertList__itemImage">
                     <img src="{{ asset($ad->img_path) }}" alt="advert-img">
@@ -18,4 +17,12 @@
         @endforeach
         
     </div>
+    <div class="pagination">
+        <div class="paginationPages">
+            <a href="{{ $ads->previousPageUrl() }}">@lang('pagination.previous')</a>
+            <div>{{ $ads->currentPage() }}/{{ $ads->lastPage() }}</div>
+            <a href="{{ $ads->nextPageUrl() }}">@lang('pagination.next')</a>
+        </div>
+    </div>
+
 @endsection

@@ -7,5 +7,7 @@
     height: 40px;
     & span {
         @include vertical-align();
+        left: 0;
+        right: 0;
     }
 }

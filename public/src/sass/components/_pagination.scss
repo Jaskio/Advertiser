@@ -1,0 +1,10 @@
+.pagination {
+    margin: $view-margin;
+    &Pages {
+        display: flex;
+        justify-content: flex-end;
+        & * {
+            margin-left: 10px;
+        }
+    }
+}

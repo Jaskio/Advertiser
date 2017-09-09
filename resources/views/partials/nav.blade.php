@@ -1,5 +1,7 @@
 <div class="headerLogo">
-    <img src="{{ url('/assets/images/logo.svg') }}" alt="header-logo">
+    <a href="{{ url('home') }}">
+        <img src="{{ url('/assets/images/logo.svg') }}" alt="header-logo">
+    </a>
 </div>
 <div class="headerContent">
     @if(Auth::check())
