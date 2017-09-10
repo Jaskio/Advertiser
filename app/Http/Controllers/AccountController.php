@@ -50,7 +50,6 @@ class AccountController extends Controller
     public function create()
     {
         dd('create account');
-        //
     }
 
     /**
@@ -66,7 +65,6 @@ class AccountController extends Controller
             'full_name' => 'required|max:255'
             ])
         );
-        //
     }
 
     /**
