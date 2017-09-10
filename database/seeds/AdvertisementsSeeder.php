@@ -18,42 +18,88 @@ class AdvertisementsSeeder extends Seeder
         }
     }
 
-    private function advertisements() {
+    private function advertisements() 
+    {
         return [
             [
-                'title' => 'Advertisement 1',
-                'description' => 'Description for advertisement 1',
+                'title' => 'Supermen t-shirt',
+                'description' => 'Description for Supermen t-shirt',
                 'price' => '50',
                 'user_id' => 2,
+                'category_id' => 1,
                 'img_path' => '/uploads/advertisements/image_01.jpg'
             ],
             [
-                'title' => 'Advertisement 2',
-                'description' => 'Description for advertisement 2',
+                'title' => 'Unicorn t-shirt',
+                'description' => 'Description for Unicorn t-shirt',
                 'price' => '40',
                 'user_id' => 2,
+                'category_id' => 1,
                 'img_path' => '/uploads/advertisements/image_02.jpg'
             ],
             [
-                'title' => 'Advertisement 3',
-                'description' => 'Description for advertisement 3',
+                'title' => 'Audi R8',
+                'description' => 'Description for Audi R8',
                 'price' => '80',
                 'user_id' => 3,
+                'category_id' => 2,
                 'img_path' => '/uploads/advertisements/image_03.jpg'
             ],
             [
-                'title' => 'Advertisement 4',
-                'description' => 'Description for advertisement 4',
+                'title' => 'BMW E30',
+                'description' => 'Description for BMW E30',
                 'price' => '90',
                 'user_id' => 3,
+                'category_id' => 2,
                 'img_path' => '/uploads/advertisements/image_04.jpg'
             ],
             [
-                'title' => 'Advertisement 5',
-                'description' => 'Description for advertisement 5',
+                'title' => 'Razer mouse',
+                'description' => 'Description for Razer mouse',
                 'price' => '1000',
                 'user_id' => 4,
+                'category_id' => 3,
                 'img_path' => '/uploads/advertisements/image_05.jpg'
+            ],
+            [
+                'title' => 'Asus monitor',
+                'description' => 'Description for Asus monitor',
+                'price' => '1000',
+                'user_id' => 4,
+                'category_id' => 3,
+                'img_path' => '/uploads/advertisements/image_06.jpg'
+            ],
+            [
+                'title' => 'Dell XPS laptop',
+                'description' => 'Description for Dell XPS laptop',
+                'price' => '1000',
+                'user_id' => 4,
+                'category_id' => 3,
+                'img_path' => '/uploads/advertisements/image_07.jpg'
+            ],
+            [
+                'title' => 'Pro microphone',
+                'description' => 'Description for Pro microphone',
+                'price' => '1000',
+                'user_id' => 4,
+                'category_id' => 4,
+                'img_path' => '/uploads/advertisements/image_08.jpg'
+            ],
+            [
+                'title' => 'Sonor drums',
+                'description' => 'Description for Sonor drums',
+                'price' => '1000',
+                'user_id' => 4,
+                'category_id' => 4,
+                'img_path' => '/uploads/advertisements/image_09.jpg'
+            ],
+            [
+                'title' => 'Ibanez guitar',
+                'description' => 'Description for Ibanez guitar',
+                'price' => '1000',
+                'user_id' => 4,
+                'category_id' => 4,
+                'img_path' => '/uploads/advertisements/image_10.jpg'
             ]
         ];
     }

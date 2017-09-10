@@ -4,6 +4,7 @@ namespace App\Repositories\Advertisement;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Repositories\Category\Category;
 use App\User;
 
 class Advertisement extends Model
@@ -41,5 +42,14 @@ class Advertisement extends Model
     */
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Defines relation between Advertisement and Category model
+     *
+     * @return model   App\Repositories\Category\Category
+    */
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 }

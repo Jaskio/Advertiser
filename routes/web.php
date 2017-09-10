@@ -17,12 +17,14 @@ Route::get('home', 'AdvertisementController@index');
 // Route::resource('advertisement', 'AdvertisementController', ['only' => [
 //     'show'
 // ]]);
-Route::get('advertisement/{id}', 'AdvertisementController@show')->where('id', '[0-9]+');
 
+Route::group(['prefix' => 'advertisement'], function() {
+    Route::get('{id}', 'AdvertisementController@show')->where('id', '[0-9]+');
+    Route::get('categories/{id}', 'AdvertisementController@showCategoryItems')->where('id', '[0-9]+')->name('advertisement.categories');
+});
 
 
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('account', 'AccountController');
-
     Route::resource('advertisement', 'AdvertisementController');
 });

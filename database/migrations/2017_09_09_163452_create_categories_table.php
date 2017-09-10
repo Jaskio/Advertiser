@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 use App\Table;
 
-class CreateAdvertisementsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,18 +15,13 @@ class CreateAdvertisementsTable extends Migration
      */
     public function up()
     {
-        Schema::create(Table::ADVERTISEMENTS, function (Blueprint $table) {
+        Schema::create(Table::CATEGORIES, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
             
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
-            $table->string('price')->default('0.00');
-            $table->string('img_path');
-            $table->integer('user_id');
-            $table->integer('category_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -39,6 +34,6 @@ class CreateAdvertisementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(Table::ADVERTISEMENTS);
+        Schema::dropIfExists(Table::CATEGORIES);
     }
 }

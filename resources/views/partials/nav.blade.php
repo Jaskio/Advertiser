@@ -3,6 +3,15 @@
         <img src="{{ url('/assets/images/logo.svg') }}" alt="header-logo">
     </a>
 </div>
+<div class="headerCategoryList">
+    <ul>
+        @foreach ($categories as $category)
+            <li>
+                <a href="{{ route('advertisement.categories', $category->id) }}">{{ $category->title }}</a>
+            </li>
+        @endforeach
+    </ul>
+</div>
 <div class="headerContent">
     @if(Auth::check())
         <div class="headerProfile">

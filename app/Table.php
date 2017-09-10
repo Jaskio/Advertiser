@@ -6,4 +6,5 @@ final class Table
 {
     const USERS = 'users';
     const ADVERTISEMENTS = 'advertisements';
+    const CATEGORIES = 'categories';
 }

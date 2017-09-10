@@ -4,6 +4,7 @@ namespace App\Repositories\Advertisement;
 
 use Auth;
 use App\Repositories\EloquentCrud;
+use Config;
 
 class AdvertisementEloquent extends EloquentCrud implements IAdvertisement
 {
@@ -41,7 +42,7 @@ class AdvertisementEloquent extends EloquentCrud implements IAdvertisement
         if ($id) {
             return $this->model->with('user')->findOrFail($id);
         } else {
-            return $this->model->paginate(4);
+            return $this->model->paginate(Config::get('settings.pagination.limit'));
         }
     }
 

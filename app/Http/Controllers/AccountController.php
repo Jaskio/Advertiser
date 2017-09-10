@@ -6,18 +6,17 @@ use Illuminate\Http\Request;
 use Auth;
 use Lang;
 use App;
-use DB;
-
 use App\Table;
 use App\Repositories\Account\IAccount;
 use App\User;
 use App\Repositories\Advertisement\Advertisement;
+use App\Repositories\Category\Category;
 
 class AccountController extends Controller
 {
     /**
      * User model to work with
-     * @var App\Repositories\User\EloquentUser
+     * @var App\User
     */
     private $model;
 
@@ -90,9 +89,10 @@ class AccountController extends Controller
     public function edit($id)
     {
         $user = $this->model->get($id);
-        
-        return view('account.edit')->with('user', $user);
-        //
+        $categories = new Category();
+
+        return view('account.edit')->with('user', $user)
+                                   ->with('categories', $categories->getModel()->get(NULL));
     }
 
     /**

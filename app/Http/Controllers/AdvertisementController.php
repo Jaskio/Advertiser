@@ -5,25 +5,37 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Advertisement\IAdvertisement;
 use App\Repositories\Account\AccountEloquent;
+use App\Repositories\Category\{
+    CategoryEloquent,
+    Category
+};
 use App\User;
 use Auth;
+use Config;
 
 class AdvertisementController extends Controller
 {
     /**
-     * User model to work with
-     * @var App\Repositories\Advertisement\EloquentAdvertisement
+     * Advertisement model to work with
+     * @var App\Repositories\Advertisement\AdvertisementEloquent
     */
     private $model;
+
+    /**
+     * Category model to work with
+     * @var App\Repositories\Category\CategoryEloquent
+    */
+    private $category_model;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(IAdvertisement $model)
+    public function __construct(IAdvertisement $model, CategoryEloquent $category_model)
     {
         $this->model = $model;
+        $this->category_model = $category_model;
     }
 
     /**
@@ -33,9 +45,10 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        $ads = $this->model->get(null);
-        // var_dump(json_decode(User::find(3)->advertisements));
-        return view('advertisement.index')->with('ads', $ads);
+        $ads = $this->model->get(NULL);
+
+        return view('advertisement.index')->with('ads', $ads)
+                                          ->with('categories', $this->category_model->get(NULL));
     }
 
     /**
@@ -45,8 +58,7 @@ class AdvertisementController extends Controller
      */
     public function create()
     {
-        return view('advertisement.create');
-        //
+        return view('advertisement.create')->with('categories', $this->category_model->get(NULL));
     }
 
     /**
@@ -83,7 +95,9 @@ class AdvertisementController extends Controller
     public function show($id)
     {
         $ad = $this->model->get($id);
-        return view('advertisement.show')->with('ad', $ad);
+
+        return view('advertisement.show')->with('ad', $ad)
+                                         ->with('categories', $this->category_model->get(NULL));
     }
 
     /**
@@ -96,8 +110,8 @@ class AdvertisementController extends Controller
     {
         $ad = $this->model->get($id);
         
-        return view('advertisement.edit')->with('ad', $ad);
-        //
+        return view('advertisement.edit')->with('ad', $ad)
+                                         ->with('categories', $this->category_model->get(NULL));
     }
 
     /**
@@ -119,7 +133,6 @@ class AdvertisementController extends Controller
         $this->model->update($data);
 
         return redirect()->back();
-        //
     }
 
     /**
@@ -132,5 +145,18 @@ class AdvertisementController extends Controller
     {
         $this->model->delete($id);
         return redirect()->back();
+    }
+
+    /**
+     * Display the specified category ads.
+     *
+     * @param [int] $category_id
+     * @return \Illuminate\Http\Response
+     */
+    public function showCategoryItems($category_id = NULL) {
+        $ads = $this->category_model->get($category_id);
+        
+        return view('advertisement.index')->with('ads', $ads)
+                                          ->with('categories', $this->category_model->get(NULL));
     }
 }

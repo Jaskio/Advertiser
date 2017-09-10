@@ -3,8 +3,6 @@
 namespace App\Repositories\Account;
 
 use Auth;
-use DB;
-
 use App\User;
 use App\Table;
 use App\Repositories\EloquentCrud;

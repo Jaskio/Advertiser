@@ -13,6 +13,16 @@
         }
     }
 
+    &CategoryList {
+        & ul li {
+            float: left;
+            margin-right: 10px;
+            & a {
+                color: $font-color-white;
+            }
+        }
+    }
+
     &Content {
         position: relative;
         right: 20px;
@@ -71,3 +81,5 @@
         }
     }
 }
+
+
