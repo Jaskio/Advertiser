@@ -27,6 +27,7 @@ class AdvertisementsSeeder extends Seeder
                 'price' => '50',
                 'user_id' => 2,
                 'category_id' => 1,
+                'sub_category_id' => 1,
                 'img_path' => '/uploads/advertisements/image_01.jpg'
             ],
             [
@@ -35,6 +36,7 @@ class AdvertisementsSeeder extends Seeder
                 'price' => '40',
                 'user_id' => 2,
                 'category_id' => 1,
+                'sub_category_id' => 1,
                 'img_path' => '/uploads/advertisements/image_02.jpg'
             ],
             [
@@ -43,6 +45,7 @@ class AdvertisementsSeeder extends Seeder
                 'price' => '80',
                 'user_id' => 3,
                 'category_id' => 2,
+                'sub_category_id' => 2,
                 'img_path' => '/uploads/advertisements/image_03.jpg'
             ],
             [
@@ -51,6 +54,7 @@ class AdvertisementsSeeder extends Seeder
                 'price' => '90',
                 'user_id' => 3,
                 'category_id' => 2,
+                'sub_category_id' => 2,
                 'img_path' => '/uploads/advertisements/image_04.jpg'
             ],
             [
@@ -59,6 +63,7 @@ class AdvertisementsSeeder extends Seeder
                 'price' => '1000',
                 'user_id' => 4,
                 'category_id' => 3,
+                'sub_category_id' => 4,
                 'img_path' => '/uploads/advertisements/image_05.jpg'
             ],
             [
@@ -67,6 +72,7 @@ class AdvertisementsSeeder extends Seeder
                 'price' => '1000',
                 'user_id' => 4,
                 'category_id' => 3,
+                'sub_category_id' => 4,
                 'img_path' => '/uploads/advertisements/image_06.jpg'
             ],
             [
@@ -75,6 +81,7 @@ class AdvertisementsSeeder extends Seeder
                 'price' => '1000',
                 'user_id' => 4,
                 'category_id' => 3,
+                'sub_category_id' => 5,
                 'img_path' => '/uploads/advertisements/image_07.jpg'
             ],
             [
@@ -83,6 +90,7 @@ class AdvertisementsSeeder extends Seeder
                 'price' => '1000',
                 'user_id' => 4,
                 'category_id' => 4,
+                'sub_category_id' => 6,
                 'img_path' => '/uploads/advertisements/image_08.jpg'
             ],
             [
@@ -91,6 +99,7 @@ class AdvertisementsSeeder extends Seeder
                 'price' => '1000',
                 'user_id' => 4,
                 'category_id' => 4,
+                'sub_category_id' => 7,
                 'img_path' => '/uploads/advertisements/image_09.jpg'
             ],
             [
@@ -99,6 +108,7 @@ class AdvertisementsSeeder extends Seeder
                 'price' => '1000',
                 'user_id' => 4,
                 'category_id' => 4,
+                'sub_category_id' => 6,
                 'img_path' => '/uploads/advertisements/image_10.jpg'
             ]
         ];

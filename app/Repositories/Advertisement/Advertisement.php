@@ -2,14 +2,17 @@
 
 namespace App\Repositories\Advertisement;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Repositories\Category\Category;
+use App\Repositories\SubCategory\SubCategory;
 use App\User;
 
 class Advertisement extends Model
 {
     use SoftDeletes;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +24,9 @@ class Advertisement extends Model
         'description',
         'price',
         'img_path',
-        'user_id'
+        'user_id',
+        'category_id',
+        'sub_category_id'
     ];
 
     /**
@@ -51,5 +56,14 @@ class Advertisement extends Model
     */
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Defines relation between Advertisement and SubCategory model
+     *
+     * @return model   App\Repositories\SubCategory\SubCategory
+    */
+    public function sub_category() {
+        return $this->belongsTo(SubCategory::class);
     }
 }

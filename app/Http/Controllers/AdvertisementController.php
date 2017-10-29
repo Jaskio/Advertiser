@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\Advertisement\IAdvertisement;
 use App\Repositories\Account\AccountEloquent;
 use App\Repositories\Category\{
     CategoryEloquent,
     Category
 };
+use App\Repositories\SubCategory\SubCategoryEloquent;
+use App\Repositories\SubCategory\SubCategory;
+use App\Repositories\Advertisement\Advertisement;
+use App\Repositories\Advertisement\AdvertisementEloquent;
 use App\User;
 use Auth;
 use Config;
+use Session;
+use Illuminate\Pagination\LengthAwarePaginator as Pagination;
 
 class AdvertisementController extends Controller
 {
@@ -28,14 +33,23 @@ class AdvertisementController extends Controller
     private $category_model;
 
     /**
+     * Category model to work with
+     * @var App\Repositories\SubCategory\SubCategoryEloquent
+    */
+    private $sub_category_model;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(IAdvertisement $model, CategoryEloquent $category_model)
+    public function __construct(AdvertisementEloquent $model, 
+                                CategoryEloquent $category_model,
+                                SubCategoryEloquent $sub_category_model)
     {
         $this->model = $model;
         $this->category_model = $category_model;
+        $this->sub_category_model = $sub_category_model;
     }
 
     /**
@@ -45,7 +59,9 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        $ads = $this->model->get(NULL);
+        $ads = $this->model->get();
+
+        // dd($this->category_model->get(NULL)); die;
 
         return view('advertisement.index')->with('ads', $ads)
                                           ->with('categories', $this->category_model->get(NULL));
@@ -155,8 +171,60 @@ class AdvertisementController extends Controller
      */
     public function showCategoryItems($category_id = NULL) {
         $ads = $this->category_model->get($category_id);
-        
+        $ads->selected_category = $ads[0]->category_id - 1;
+
         return view('advertisement.index')->with('ads', $ads)
                                           ->with('categories', $this->category_model->get(NULL));
+    }
+
+    /**
+     * Filter ads
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function filter(Request $request) {
+        $input = $request->only([
+                                'sub_category',
+                                'price_from',
+                                'price_to'
+                            ]);
+        $ads = $this->model->getAll();
+        $filtered_data = [];
+
+        if ($request->search_term) {
+            foreach($ads as $ad) {
+                if ( strtolower($ad->title) == strtolower($request->search_term) ) {
+                    $filtered_data[] = $ad;
+                }
+            }
+
+        } 
+        else {
+            $filtered_data = $ads;
+
+            if ( isset($input['sub_category']) ) {
+                $filtered_data = Advertisement::whereIn('sub_category_id', array_flatten($input['sub_category']))->get();
+            }
+
+            if ( isset($input['price_from']) && isset($input['price_to']) ) {
+                foreach($filtered_data as $key => $ad) {
+                    if ( $input['price_from'] > $ad->price || 
+                         $input['price_to'] < $ad->price ) 
+                    {
+                        $filtered_data->forget($key);
+                    }
+                }
+            }
+        }
+
+        $filtered_data = new Pagination($filtered_data, 
+                                        count($filtered_data), 
+                                        Config::get('settings.pagination.limit'));
+        $filtered_data->selected_category = $filtered_data[0]->category_id - 1;
+        
+        return view('advertisement.index')->with('ads', $filtered_data)
+                                          ->with('categories', $this->category_model->get(NULL));
+
     }
 }

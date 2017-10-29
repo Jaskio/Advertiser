@@ -44,7 +44,9 @@ class CategoryEloquent extends EloquentCrud
             
             return $category->advertisements()->paginate(Config::get('settings.pagination.limit'));
         } else {
-            return $this->model->all();
+            $categories = $this->model->with('sub_categories')->get();
+
+            return $categories;
         }
     }
 }

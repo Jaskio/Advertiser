@@ -8,12 +8,7 @@ use App\Repositories\Account\{
     IAccount,
     AccountEloquent
 };
-use App\Repositories\Advertisement\{
-    IAdvertisement,
-    AdvertisementEloquent
-};
 use App\User;
-use App\Repositories\Advertisement\Advertisement;
 
 class RepositoriesServiceProvider extends ServiceProvider
 {
@@ -46,12 +41,6 @@ class RepositoriesServiceProvider extends ServiceProvider
 
             return $model;
         });
-
-        $this->app->bind(IAdvertisement::class, function() {
-            $model = new AdvertisementEloquent(new Advertisement);
-
-            return $model;
-        });
     }
 
     /**
@@ -62,8 +51,7 @@ class RepositoriesServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            IAccount::class,
-            IAdvertisement::class
+            IAccount::class
         ];
     }
 }

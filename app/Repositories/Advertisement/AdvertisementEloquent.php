@@ -6,7 +6,7 @@ use Auth;
 use App\Repositories\EloquentCrud;
 use Config;
 
-class AdvertisementEloquent extends EloquentCrud implements IAdvertisement
+class AdvertisementEloquent extends EloquentCrud
 {
     /**
      * Advertisement instance, Laravel's model
@@ -44,6 +44,15 @@ class AdvertisementEloquent extends EloquentCrud implements IAdvertisement
         } else {
             return $this->model->paginate(Config::get('settings.pagination.limit'));
         }
+    }
+
+    /**
+     * Get all ads excluding pagination
+     *
+     * @return array
+     */
+    public function getAll() {
+        return $this->model->get();
     }
 
     // public function delete($id, $hardDelete = false) 

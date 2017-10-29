@@ -27,6 +27,7 @@ class CreateAdvertisementsTable extends Migration
             $table->string('img_path');
             $table->integer('user_id');
             $table->integer('category_id');
+            $table->integer('sub_category_id');
             $table->timestamps();
             $table->softDeletes();
         });

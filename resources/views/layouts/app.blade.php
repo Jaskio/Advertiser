@@ -9,11 +9,9 @@
         </header>
 
         <div class="mainContainer">
-            @if(Request::is('home'))
-                <aside class="sidebar">
-                    @include('partials.sidebar')
-                </aside>
-            @endif
+            <aside class="sidebar">
+                @include('partials.sidebar')
+            </aside>
 
             <section class="content">
                 @yield('content')

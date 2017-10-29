@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="advertList">
-
+    
         @foreach ($ads as $ad)
             <div class="advertList__item">
                 <div class="advertList__itemImage">
