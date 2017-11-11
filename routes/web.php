@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::get('home', 'AdvertisementController@index');
+Route::get('/', 'AdvertisementController@index');
 // Route::resource('advertisement', 'AdvertisementController', ['only' => [
 //     'show'
 // ]]);
@@ -21,7 +21,7 @@ Route::get('home', 'AdvertisementController@index');
 Route::group(['prefix' => 'advertisement'], function() {
     Route::get('{id}', 'AdvertisementController@show')->where('id', '[0-9]+');
     Route::get('categories/{id}', 'AdvertisementController@showCategoryItems')->where('id', '[0-9]+')->name('advertisement.categories');
-    Route::post('advertisement/filter', 'AdvertisementController@filter')->name('advertisement.filter');
+    Route::post('filter', 'AdvertisementController@filter')->name('advertisement.filter');
 });
 
 

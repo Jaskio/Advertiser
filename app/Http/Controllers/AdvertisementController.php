@@ -190,15 +190,16 @@ class AdvertisementController extends Controller
                                 'price_to'
                             ]);
         $ads = $this->model->getAll();
-        $filtered_data = [];
+        $filtered_data = collect();
 
         if ($request->search_term) {
             foreach($ads as $ad) {
-                if ( strtolower($ad->title) == strtolower($request->search_term) ) {
-                    $filtered_data[] = $ad;
+                $ad_name = strtolower($ad->title);
+                $search_term = strtolower($request->search_term);
+                if ( strpos($ad_name, $search_term) !== false ) {
+                    $filtered_data->prepend($ad);
                 }
             }
-
         } 
         else {
             $filtered_data = $ads;
@@ -218,13 +219,14 @@ class AdvertisementController extends Controller
             }
         }
 
-        $filtered_data = new Pagination($filtered_data, 
-                                        count($filtered_data), 
-                                        Config::get('settings.pagination.limit'));
-        $filtered_data->selected_category = $filtered_data[0]->category_id - 1;
+        if ( $filtered_data->isNotEmpty() ) {
+            $filtered_data = new Pagination($filtered_data, 
+                                            count($filtered_data), 
+                                            Config::get('settings.pagination.limit'));
+            $filtered_data->selected_category = $filtered_data->first()->category_id - 1;
+        }
         
         return view('advertisement.index')->with('ads', $filtered_data)
                                           ->with('categories', $this->category_model->get(NULL));
-
     }
 }

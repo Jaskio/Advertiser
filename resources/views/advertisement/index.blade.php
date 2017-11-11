@@ -3,6 +3,7 @@
 @section('content')
     <div class="advertList">
     
+    @if ( $ads->isNotEmpty() )
         @foreach ($ads as $ad)
             <div class="advertList__item">
                 <div class="advertList__itemImage">
@@ -15,7 +16,6 @@
                 <a href="{{ route('advertisement.show', $ad->id) }}"></a>
             </div>
         @endforeach
-        
     </div>
     <div class="pagination">
         <div class="paginationPages">
@@ -25,4 +25,10 @@
         </div>
     </div>
 
+    @else
+        <div>
+            No results!
+        </div>
+    @endif
+        
 @endsection
