@@ -28,7 +28,7 @@
                 <div class="headerProfile__listArrow"></div>
                 <ul class="headerProfile__listItems">
                     <li>
-                        <a href="{{ route('account.edit', Auth::user()) }}">@lang('partials/nav.account_settings')</a>
+                        <a href="{{ route('profile.edit') }}">@lang('partials/nav.account_settings')</a>
                     </li>
                     <li>
                         {{ Form::open(['route' => 'logout', 'method' => 'POST']) }}

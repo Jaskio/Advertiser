@@ -1,15 +1,9 @@
-@extends('layouts.app')
+<div>
 
-@section('content')
-    <div class="container">
+    {{ Form::open(['route' => ['advertisement.store'], 'method' => 'POST']) }}
 
-        {{ Form::open(['route' => ['advertisement.store'], 'method' => 'POST']) }}
-            {{ Form::text('title') }}
-            {{ Form::text('description') }}
-            {{ Form::text('price') }}
-            {{ Form::text('img_path') }}
-            {{ Form::submit(trans('forms.account_save')) }}
-        {{ Form::close() }}
+        @include('advertisement.fields')
+        
+    {{ Form::close() }}
 
-    </div>
-@endsection
+</div>

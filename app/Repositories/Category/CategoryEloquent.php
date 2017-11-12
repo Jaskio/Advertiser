@@ -4,9 +4,8 @@ namespace App\Repositories\Category;
 
 use Auth;
 use Config;
-use App\Repositories\EloquentCrud;
 
-class CategoryEloquent extends EloquentCrud
+class CategoryEloquent
 {
     /**
      * Category instance, Laravel's model
@@ -38,7 +37,7 @@ class CategoryEloquent extends EloquentCrud
      * @param int $id  id of specified category
      * @return object
     */
-    public function get($id) {
+    public function get($id = NULL) {
         if ($id) {
             $category = $this->model->with('advertisements')->findOrFail($id);
             

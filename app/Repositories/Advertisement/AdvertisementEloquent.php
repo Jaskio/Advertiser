@@ -3,10 +3,9 @@
 namespace App\Repositories\Advertisement;
 
 use Auth;
-use App\Repositories\EloquentCrud;
 use Config;
 
-class AdvertisementEloquent extends EloquentCrud
+class AdvertisementEloquent
 {
     /**
      * Advertisement instance, Laravel's model

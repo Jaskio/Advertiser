@@ -1,33 +1,63 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        
-        <!--{{$user}}-->
+    <div>
+        <ul>
+            <li>
+                <a href="{{ route('profile.edit') }}">
+                    Profile
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('profile.edit', 'adverts') }}">
+                    Adverts
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('profile.edit', 'create-new') }}">Create New</a>
+            </li>
+        </ul>
 
-        {{ Form::model($user, ['route' => ['account.update', $user->id], 'method' => 'PUT']) }}
-            {{ Form::text('full_name', null) }}
+        @switch( Request::segment(3) )
 
-            {{ Form::email('email', null, ['class' => 'form-control', 'pattern'=>'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$']) }}
-            {{ Form::submit(trans('forms.account_save')) }}
-        {{ Form::close() }}
+            @case('adverts')
+                @foreach ($user->advertisements as $ad)
+                    <div>
+                        {{ Form::open(['route' => ['advertisement.destroy', $ad->id], 'method' => 'DELETE']) }}
+                            <h1>{{ $ad->title }}</h1> 
+                            <h2>{{ $ad->price }} $</h2>
+                            <h3>{{ $ad->description }}</h3>
 
-        <a href="{{ route('advertisement.create') }}">create new ad</a>
+                            <a href="{{ route('advertisement.show', $ad->id) }}">show</a>
+                            <a href="{{ route('profile.edit', ['ad', $ad->id]) }}">edit</a>
+                            {{ Form::button('delete', ['type' => 'submit']) }}
 
-        @foreach ($user->advertisements as $ad)
-            <div>
-                {{ Form::open(['route' => ['advertisement.destroy', $ad->id], 'method' => 'DELETE']) }}
-                    <h1>{{ $ad->title }}</h1> 
-                    <h2>{{ $ad->price }} $</h2>
-                    <h3>{{ $ad->description }}</h3>
+                        {{ Form::close() }}
+                    </div>
+                    <hr>
+                @endforeach
+            @break
 
-                    <a href="{{ route('advertisement.show', $ad->id) }}">show</a>
-                    <a href="{{ route('advertisement.edit', $ad->id) }}">edit</a>
-                    {{ Form::button('delete', ['type' => 'submit']) }}
+            @case('create-new')
+                @include('advertisement.create')
+            @break
 
+            @case('ad')
+                @include('advertisement.edit', ['index' => Request::segment(4) - 1])
+            @break
+
+            @default
+            {{ Request::segment(3) }}
+                {{ Form::model($user, ['route' => ['account.update', $user->id], 'method' => 'PUT']) }}
+                    {{ Form::text('full_name', null) }}
+
+                    {{ Form::email('email', null, ['class' => 'form-control', 'pattern'=>'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$']) }}
+                    {{ Form::submit(trans('forms.account_save')) }}
                 {{ Form::close() }}
-            </div>
-            <hr>
-        @endforeach
+            @break
+       
+        @endswitch
+
     </div>
+
 @endsection

@@ -27,7 +27,6 @@ class AccountController extends Controller
     */
     public function __construct(IAccount $model) {
         $this->model = $model;
-        // var_dump($this->model->find(1));die;
     }
 
     /**
@@ -81,16 +80,15 @@ class AccountController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editAccount()
     {
-        $user = $this->model->get($id);
+        $user = $this->model->get(Auth::user()->id);
         $categories = new Category();
 
         return view('account.edit')->with('user', $user)
-                                   ->with('categories', $categories->getModel()->get(NULL));
+                                   ->with('categories', $categories->getModel()->get());
     }
 
     /**

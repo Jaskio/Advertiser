@@ -64,7 +64,7 @@ class AdvertisementController extends Controller
         // dd($this->category_model->get(NULL)); die;
 
         return view('advertisement.index')->with('ads', $ads)
-                                          ->with('categories', $this->category_model->get(NULL));
+                                          ->with('categories', $this->category_model->get());
     }
 
     /**
@@ -74,7 +74,7 @@ class AdvertisementController extends Controller
      */
     public function create()
     {
-        return view('advertisement.create')->with('categories', $this->category_model->get(NULL));
+        return view('advertisement.create')->with('categories', $this->category_model->get());
     }
 
     /**
@@ -110,10 +110,11 @@ class AdvertisementController extends Controller
      */
     public function show($id)
     {
+        // $id = decrypt($id);
         $ad = $this->model->get($id);
 
         return view('advertisement.show')->with('ad', $ad)
-                                         ->with('categories', $this->category_model->get(NULL));
+                                         ->with('categories', $this->category_model->get());
     }
 
     /**
@@ -127,7 +128,7 @@ class AdvertisementController extends Controller
         $ad = $this->model->get($id);
         
         return view('advertisement.edit')->with('ad', $ad)
-                                         ->with('categories', $this->category_model->get(NULL));
+                                         ->with('categories', $this->category_model->get());
     }
 
     /**
@@ -174,7 +175,7 @@ class AdvertisementController extends Controller
         $ads->selected_category = $ads[0]->category_id - 1;
 
         return view('advertisement.index')->with('ads', $ads)
-                                          ->with('categories', $this->category_model->get(NULL));
+                                          ->with('categories', $this->category_model->get());
     }
 
     /**
@@ -227,6 +228,6 @@ class AdvertisementController extends Controller
         }
         
         return view('advertisement.index')->with('ads', $filtered_data)
-                                          ->with('categories', $this->category_model->get(NULL));
+                                          ->with('categories', $this->category_model->get());
     }
 }

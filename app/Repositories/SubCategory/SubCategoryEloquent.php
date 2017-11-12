@@ -3,9 +3,8 @@
 namespace App\Repositories\SubCategory;
 
 use Config;
-use App\Repositories\EloquentCrud;
 
-class SubCategoryEloquent extends EloquentCrud
+class SubCategoryEloquent
 {
     /**
      * SubCategory instance, Laravel's model

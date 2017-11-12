@@ -5,7 +5,6 @@ namespace App\Repositories\Account;
 use Auth;
 use App\User;
 use App\Table;
-use App\Repositories\EloquentCrud;
 
 class AccountEloquent implements IAccount
 {

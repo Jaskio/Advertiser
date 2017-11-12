@@ -1,14 +1,11 @@
-@extends('layouts.app')
+<div>
 
-@section('content')
-    <div class="container">
+    @php ($ad = $user->advertisements[$index])
 
-        {{ Form::model($ad, ['route' => ['advertisement.update', $ad->id], 'method' => 'PUT']) }}
-            {{ Form::text('title') }}
-            {{ Form::text('description') }}
-            {{ Form::text('price') }}
-            {{ Form::submit(trans('forms.account_save')) }}
-        {{ Form::close() }}
+    {{ Form::model($ad, ['route' => ['advertisement.update', $ad->id], 'method' => 'PUT']) }}
 
-    </div>
-@endsection
+        @include('advertisement.fields')
+        
+    {{ Form::close() }}
+
+</div>

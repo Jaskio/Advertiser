@@ -9,9 +9,11 @@
         </header>
 
         <div class="mainContainer">
-            <aside class="sidebar">
-                @include('partials.sidebar')
-            </aside>
+            @if ( !Request::is('profile/*') )
+                <aside class="sidebar">
+                    @include('partials.sidebar')
+                </aside>
+            @endif
 
             <section class="content">
                 @yield('content')

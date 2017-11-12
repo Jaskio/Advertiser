@@ -6,8 +6,6 @@ use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
-use App\Repositories\Advertisement\Advertisement;
-
 class Handler extends ExceptionHandler
 {
     /**

@@ -30,7 +30,7 @@
                 </div>
             @endforeach
 
-            @if ( Request::is('advertisement/categories/*') )
+            @if ( Request::is('categories/*') )
                 @foreach ($categories[$ads->selected_category]->sub_categories as $sub_category)
                     <div>
                         {{ Form::label($sub_category->title) }}
