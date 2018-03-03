@@ -27,7 +27,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 
         'remember_token',
         'deleted_at',
         'updated_at',
@@ -44,7 +43,9 @@ class User extends Authenticatable
     public static function userRules() {
         return [
                 'full_name'    => 'required|string|min:5|max:100',
-                'email'        => 'required|email'
+                'email'        => 'required|email',
+                // 'password'     => 'required|min:6',
+                'avatar_path'  => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ];
     }
 

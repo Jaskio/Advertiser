@@ -102,13 +102,31 @@ class AccountController extends Controller
     {
         $this->validate($request, $this->model->getModel()::userRules());
 
-        $data = $request->only(['full_name',
-                                'email']);
-        $data['id'] = $id;
+        $input = $request->only(['full_name',
+                                'email',
+                                'password',
+                                'avatar_path']);
+        $input['id'] = $id;
+        
+        if ($request->hasFile('avatar_path')) {
+            $image = $request->file('avatar_path');
+            $fileName   = time() . '.' . $image->getClientOriginalExtension();
+    
+            $destinationPath = '/uploads/avatar/';
+            $image->move(public_path($destinationPath), $fileName);
 
-        $this->model->update($data);
+            $input['avatar_path'] = $destinationPath . $fileName;
+        }
 
-        return redirect()->back();
+        if ($request->password == '') {
+            unset($input['password']);
+        } else {
+            $input['password'] = bcrypt($input['password']);
+        }
+    
+        $this->model->update($input);
+
+        return redirect()->back()->with('success_message', trans('forms.success_message'));
     }
 
     /**

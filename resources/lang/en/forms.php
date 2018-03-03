@@ -17,5 +17,6 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'account_save' => 'Save'
+    'account_save' => 'Save',
+    'success_message' => 'Profile successufully updated.',
 ];

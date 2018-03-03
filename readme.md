@@ -1,20 +1,15 @@
-# Advertiser
 
-Laravel 5.4 application for creating and publishing ads
+# Setup
 
-This is an web application designed to allow users to create ad and publish it worldwide! The project is a work in progress and also selected for learning purpose, but at the end you will be able to do some basic functions:
+Go to your root path and type:
+* Create .env file &nbsp; ```cp .env.example .env``` &nbsp; and change database information like so: <br />
+    &emsp; DB_DATABASE=yourDatabaseName <br />
+    &emsp; DB_USERNAME=yourUsername <br />
+    &emsp; DB_PASSWORD=yourPassword (leave blank if you don't have any) <br />
+* Run &nbsp; ```composer update```  
+* Run &nbsp; ```php artisan key:generate```
+* Create and seed the table &nbsp; ```php artisan migrate:refresh --seed```
 
- - Have access to all ads
- - Search or filter ads
- - Create account and set your own ads
-
-
-## Setup
-Install dependencies and set up your .env file   
-* run ```composer update```   
-* run ```php artisan key:generate```   
-* Add the key you generated to your .env file and define your database
-* Create and seed the tables in the database ```php artisan migrate:refresh --seed``` 
 
 
 
