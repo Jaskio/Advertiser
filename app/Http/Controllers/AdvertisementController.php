@@ -62,7 +62,6 @@ class AdvertisementController extends Controller
         $ads = $this->model->get();
 
         // dd($this->category_model->get(NULL)); die;
-
         return view('advertisement.index')->with('ads', $ads)
                                           ->with('categories', $this->category_model->get());
     }
@@ -112,7 +111,7 @@ class AdvertisementController extends Controller
     {
         // $id = decrypt($id);
         $ad = $this->model->get($id);
-
+        
         return view('advertisement.show')->with('ad', $ad)
                                          ->with('categories', $this->category_model->get());
     }
@@ -140,16 +139,29 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $this->validate($request, $this->model->getModel()::userRules());
+        $this->validate($request, $this->model->getModel()::advertisementRules());
 
-        $data = $request->only(['title',
+        $input = $request->only(['title',
                                 'description',
-                                'price']);
-        $data['id'] = $id;
+                                'price',
+                                'sub_category_id',
+                                'img_path']);
 
-        $this->model->update($data);
+        if ($request->hasFile('img_path')) {
+            $image = $request->file('img_path');
+            $fileName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME) . '_' . time() . '.' . $image->getClientOriginalExtension();
+    
+            $destinationPath = '/uploads/advertisements/';
+            $image->move(public_path($destinationPath), $fileName);
 
-        return redirect()->back();
+            $input['img_path'] = $destinationPath . $fileName;
+        }
+
+        $input['id'] = $id;
+        $input['sub_category_id'] = ++$input['sub_category_id'];
+        $this->model->update($input);
+
+        return redirect()->back()->with('success_message', trans('forms.success_message'));
     }
 
     /**

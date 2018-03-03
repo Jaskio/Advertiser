@@ -54,6 +54,16 @@ class AdvertisementEloquent
         return $this->model->get();
     }
 
+    /**
+     * Update row in advertisement table
+     *
+     * @param array $data Data to update users settings
+     * @return object
+    */
+    public function update($data) {
+        return $this->model->where('id', $data['id'])->update($data);
+    }
+
     // public function delete($id, $hardDelete = false) 
     // {   
     //     return $this->getModel()->where('id', $id)->delete();

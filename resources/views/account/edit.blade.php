@@ -65,9 +65,9 @@
                         {{$errors->first('password')}}
                    
                     <fieldset>
-                    <div>
-                        <img src="{{ asset($user->avatar_path) }}" alt="avatar path">
-                    </div>
+                        <div>
+                            <img src="{{ asset($user->avatar_path) }}" alt="avatar">
+                        </div>
                         {{ Form::file('avatar_path', ['class' => 'form-control']) }}   
 
                             {{$errors->first('avatar_path')}}

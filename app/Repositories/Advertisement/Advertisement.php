@@ -41,6 +41,22 @@ class Advertisement extends Model
     ];
 
     /**
+     * Get Laravel rules for Advertisement model
+     *
+     * @param array $merge
+     * @return array of rules
+    */
+    public static function advertisementRules() {
+        return [
+                'title'            => 'required|string',
+                'description'      => 'max:200',
+                'price'            => 'required|integer',
+                'img_path'         => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'sub_category_id'  => 'required'
+            ];
+    }
+
+    /**
      * Defines relation between Advertisement and User model
      *
      * @return model   App\Repositories\User\User

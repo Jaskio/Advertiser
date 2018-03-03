@@ -11,6 +11,7 @@ use App\Repositories\Account\IAccount;
 use App\User;
 use App\Repositories\Advertisement\Advertisement;
 use App\Repositories\Category\Category;
+use App\Repositories\SubCategory\SubCategory;
 
 class AccountController extends Controller
 {
@@ -86,9 +87,11 @@ class AccountController extends Controller
     {
         $user = $this->model->get(Auth::user()->id);
         $categories = new Category();
+        $subcategories = new SubCategory();
 
         return view('account.edit')->with('user', $user)
-                                   ->with('categories', $categories->getModel()->get());
+                                   ->with('categories', $categories->getModel()->get())
+                                   ->with('subcategories', $subcategories->getModel()->get());
     }
 
     /**
@@ -106,11 +109,10 @@ class AccountController extends Controller
                                 'email',
                                 'password',
                                 'avatar_path']);
-        $input['id'] = $id;
         
         if ($request->hasFile('avatar_path')) {
             $image = $request->file('avatar_path');
-            $fileName   = time() . '.' . $image->getClientOriginalExtension();
+            $fileName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME) . '_' . time() . '.' . $image->getClientOriginalExtension();
     
             $destinationPath = '/uploads/avatar/';
             $image->move(public_path($destinationPath), $fileName);
@@ -118,12 +120,13 @@ class AccountController extends Controller
             $input['avatar_path'] = $destinationPath . $fileName;
         }
 
-        if ($request->password == '') {
+        if ($request->password == '' || $request->password == null) {
             unset($input['password']);
         } else {
             $input['password'] = bcrypt($input['password']);
         }
-    
+
+        $input['id'] = $id;
         $this->model->update($input);
 
         return redirect()->back()->with('success_message', trans('forms.success_message'));
