@@ -10,9 +10,6 @@ return [
     */
 
     'pagination' => [
-        'limit' => 4
+        'limit' => 8
     ]
-
-    
-
 ];

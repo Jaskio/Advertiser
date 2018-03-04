@@ -1,10 +1,14 @@
-$green:             #a2d200;
-$orange:            #ffc100;
-$slategray:         #3f4e62;
-$darkgray:          #333;
-$brand-primary:     #428bca;
-$brand-success:     #5cb85c;
-$brand-warning:     #f0ad4e;
-$brand-danger:      #d9534f;
-$brand-info:        #5bc0de;
-$brand-default:     #616f77;
+$font-color-white:                #fff;
+$font-color:                      #616f77;
+$font-color-dark:                  darken($font-color, 10%);
+$font-color-light:                 lighten($font-color, 20%);
+
+$header-bg:                       #51445f;
+$sidebar-bg:                      #493d55;
+$content-bg:                       lighten($font-color, 49%);
+$footer-bg:                       #51445f;
+$pagination-btn:                  lighten($font-color, 45%);
+$main-border:                     #bbbbbb;
+
+$transparent-white-05:			  rgba(255,255,255,.05);
+$transparent-black-05:			  rgba(0,0,0,.05);

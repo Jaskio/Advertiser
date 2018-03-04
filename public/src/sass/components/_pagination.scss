@@ -1,10 +1,18 @@
 .pagination {
-    margin: $view-margin;
+    margin: 24px $view-margin;
+    display: flex;
+    justify-content: flex-end;
     &Pages {
-        display: flex;
-        justify-content: flex-end;
         & * {
-            margin-left: 10px;
+            padding: 7px 12px;
+            display: inline-block;
+        }
+        a {
+            background: $pagination-btn;
+        }
+        span {
+            background: lighten($font-color, 53%);
+            padding: 7px 26px;
         }
     }
 }

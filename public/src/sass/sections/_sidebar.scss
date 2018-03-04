@@ -1,5 +1,75 @@
+.sidebar-input {
+    outline: none;
+    height: 30px;
+    line-height: 30px;
+    border: none;
+    padding-left: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 15px;
+}
+
 .sidebar {
     min-width: 300px;
-    border: 1px solid black;
+    border: 1px solid $main-border;
     margin: $view-margin;
+    height: 100%;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    &__search {
+        padding: 10px 0;
+        input {
+            @extend .sidebar-input;
+        }
+    }
+    &__categories {
+        padding: 10px 0;
+    }
+    &__categoriesList {
+        padding-bottom: 5px;
+        span {
+            background: lighten($font-color, 54%);
+            padding: 6px 8px;
+            display: inline-block;
+            margin-bottom: 4px;
+            color: $font-color;
+        }
+    }
+    &__subCategories {
+
+    }
+    &__subCategoryItem {
+        display: flex;
+        align-items: center;
+        flex-flow: row-reverse;
+        justify-content: flex-end;
+        input {
+            cursor: pointer;
+        }
+    }
+    &__price {
+        padding: 10px 0;
+        h2 {
+            margin-bottom: 3px;
+        }
+    }
+    &__priceRange {
+        display: flex;
+        span {
+            width: 30%;
+        }
+        span:nth-child(1) {
+            margin-right: 10px;
+        }
+        input {
+            @extend .sidebar-input;
+        }
+    }
+    &__submitButton {
+        text-align: center;
+        margin-top: 30px;
+        input {
+            @extend .sidebarSubmit;
+        }
+    }
 }

@@ -28,7 +28,8 @@ class CreateAdvertisementsTable extends Migration
             $table->integer('user_id');
             $table->integer('category_id');
             $table->integer('sub_category_id');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->softDeletes();
         });
     }

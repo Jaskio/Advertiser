@@ -11,3 +11,12 @@
     font-size: $font-size-base;
     color: $font-color;
 }
+
+.sidebarSubmit {
+    @extend .button;
+    background: lighten($font-color, 15%);
+    width: 50%;
+    padding: 6px 0;
+    color: $font-color-white;
+    font-size: $font-size-base;
+}

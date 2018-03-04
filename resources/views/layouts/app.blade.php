@@ -14,15 +14,14 @@
                     @include('partials.sidebar')
                 </aside>
             @endif
-
             <section class="content">
                 @yield('content')
             </section>
         </div>
 
-        <!-- <footer class="footer">
+        <footer class="footer">
             @include('partials.footer')
-        </footer> -->
+        </footer>
 
         <!-- Scripts -->
         @include('partials.javascript')

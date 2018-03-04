@@ -105,10 +105,11 @@ class AdvertisementController extends Controller
         if(!$input['description']) {
             unset($input['description']);
         }
-        
+
         $input['user_id'] = Auth::user()->id;
         $input['sub_category_id'] = ++$input['sub_category_id'];
         $input['category_id'] = $this->sub_category_model->get($input['sub_category_id'])->category_id;
+
         $this->model->create($input);
 
         return redirect()->route('profile.edit', 'adverts')->with('new_ad_success', trans('forms.new_ad_success'));
@@ -186,6 +187,7 @@ class AdvertisementController extends Controller
     public function destroy($id)
     {
         $this->model->delete($id);
+        
         return redirect()->back();
     }
 

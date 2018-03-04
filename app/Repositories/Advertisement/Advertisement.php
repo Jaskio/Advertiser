@@ -36,8 +36,7 @@ class Advertisement extends Model
      */
     protected $hidden = [
         'updated_at',
-        'deleted_at',
-        'created_at'
+        'deleted_at'
     ];
 
     /**

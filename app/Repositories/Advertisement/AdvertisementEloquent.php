@@ -64,12 +64,25 @@ class AdvertisementEloquent
         return $this->model->where('id', $data['id'])->update($data);
     }
 
+    /**
+     * Creating new resource in advertisement table
+     *
+     * @param [Object] $data
+     * @return void
+     */
     public function create($data) {
         $this->model->create($data);
     }
 
-    // public function delete($id, $hardDelete = false) 
-    // {   
-    //     return $this->getModel()->where('id', $id)->delete();
-    // }
+    /**
+     * Delete row in advertisement table
+     *
+     * @param [Integer] $id
+     * @param boolean $hardDelete
+     * @return void
+     */
+    public function delete($id, $hardDelete = false) 
+    {
+        $this->model->where('id', $id)->delete();
+    }
 }

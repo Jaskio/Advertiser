@@ -1,7 +1,7 @@
 .mainContainer {
     display: flex;
     padding: 14px;
-    height: 100vh;
+    min-height: calc(100vh - 128px);
 }
 
 .content {
@@ -14,15 +14,17 @@
     flex-flow: wrap;
     &__item {
         width: 23.5%;
-        min-height: 200px;
-        border: 1px solid darken($font-color, 10%);
-        margin: 0 0 8px 8px;
+        height: 320px;
+        border: 1px solid $main-border;
+        margin: 0 0 16px 8px;
         position: relative;
         &Image {
             height: 50%;
             & img {
                 height: 100%;
                 width: 100%;
+                object-fit: cover;
+                object-position: top;
             }
         }
         &Info {
@@ -30,17 +32,25 @@
             height: 50%;
             position: relative;
             & h2 {
-                text-align: start;
+                text-align: center;
                 font-size: $font-size-large;
                 padding: 6px;
+                position: relative;
+                top: 15px;
             }
             &Price {
-                @include vertical-align();
+                position: absolute;
                 left: 0;
                 right: 0;
                 padding: 10px 0;
                 background: lighten($font-color, 15%);
                 color: $font-color-white;
+                bottom: 30%;
+            }
+            span {
+                position: absolute;
+                bottom: 8%;
+                right: 5%;
             }
         }
         & a {

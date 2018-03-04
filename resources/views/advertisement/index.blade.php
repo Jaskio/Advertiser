@@ -12,6 +12,7 @@
                 <div class="advertList__itemInfo">
                     <h2>{{ $ad->title }}</h2> 
                     <div class="advertList__itemInfoPrice">{{ $ad->price }} $</div>
+                    <span>{{ $ad->created_at->format('d.m.Y') }}</span>
                 </div>
                 <a href="{{ route('advertisement.show', $ad->id) }}"></a>
             </div>
@@ -20,7 +21,7 @@
     <div class="pagination">
         <div class="paginationPages">
             <a href="{{ $ads->previousPageUrl() }}">@lang('pagination.previous')</a>
-            <div>{{ $ads->currentPage() }}/{{ $ads->lastPage() }}</div>
+            <span>Page {{ $ads->currentPage() }} of {{ $ads->lastPage() }}</span>
             <a href="{{ $ads->nextPageUrl() }}">@lang('pagination.next')</a>
         </div>
     </div>

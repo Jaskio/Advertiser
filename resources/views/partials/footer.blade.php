@@ -1,1 +1,1 @@
-<span>2017 &copy; Advertiser</span>
+<span>2018 &copy; Advertiser</span>
