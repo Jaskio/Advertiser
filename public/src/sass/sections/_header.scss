@@ -42,6 +42,7 @@
         }
         &__name {
             margin-right: 10px;
+            color: lighten($font-color, 52%);
         }
         &__navArrow {
             @include arrow(5px, $font-color-white, top);
@@ -51,20 +52,37 @@
             right: 0;
             margin-top: 8px;
             border: 1px solid darken($content-bg, 10%);
-            background: $content-bg;
+            background: lighten($content-bg, 5%);
             z-index: 999;
+            display: none;
+            &--active {
+                display: block;
+            }
             &Arrow {
                 position: absolute;
                 right: 10px;
                 top: -8px;
-                @include arrow(7px, $content-bg, bottom);
+                @include arrow(7px, lighten($content-bg, 5%), bottom);
             }
             &Items {
+                min-width: 170px;
+                padding: 0 8px;
                 & li {
                     padding: 8px;
                     border-bottom: 1px solid darken($content-bg, 12%);
+                    position: relative;
+                    height: 45px;
+                    line-height: 45px;
+                    &:last-child() {
+                        border-bottom: none;
+                    }
                     & a {
                         color: $font-color;
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        padding: 0 8px;
+                        box-sizing: border-box;
                     }
                 }
             }
@@ -81,5 +99,3 @@
         }
     }
 }
-
-

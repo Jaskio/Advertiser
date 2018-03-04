@@ -16,6 +16,27 @@
     height: 100%;
     padding: 20px 15px;
     box-sizing: border-box;
+    min-height: calc(100vh - 144px);
+    &__user {
+        text-align: center;
+    }
+    &__userImage {
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    }
+    &__userInfo {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        span {
+            margin-bottom: 3px;
+            &:nth-child(1) {
+                font-weight: 500;
+            }
+        }
+    }
     &__search {
         padding: 10px 0;
         input {
@@ -29,7 +50,7 @@
         padding-bottom: 5px;
         span {
             background: lighten($font-color, 54%);
-            padding: 6px 8px;
+            padding: 8px 10px;
             display: inline-block;
             margin-bottom: 4px;
             color: $font-color;

@@ -1,11 +1,12 @@
 @if ( Request::is('advertisement/*') && is_numeric(Request::segment(2)) )
-    <div>
-        <div>
-            <img src="{{ asset($ad->user->avatar_path) }}" style="height:100px; width:80px">
+    <div class="sidebar__user">
+        <div class="sidebar__userImage">
+            <img src="{{ asset($ad->user->avatar_path) }}">
         </div>
-        <div>
-            {{ $ad->user->full_name }} <br>
-            {{ $ad->user->email }}
+        <div class="sidebar__userInfo">
+            <span>{{ $ad->user->full_name }}</span>
+            <span>{{ $ad->user->email }}</span>
+            <span>joined {{ $ad->user->created_at->format('F j, Y') }}</span>
         </div>
     </div>
 @else

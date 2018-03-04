@@ -15,7 +15,7 @@
 <div class="headerContent">
     @if(Auth::check())
         <div class="headerProfile">
-            <div class="headerProfile__profile">
+            <div class="headerProfile__profile" onclick="userMenu()">
                 <div class="headerProfile__image">
                     <img src="{{ asset(Auth::user()->avatar_path) }}" alt="avatar">
                 </div>
@@ -31,9 +31,7 @@
                         <a href="{{ route('profile.edit') }}">@lang('partials/nav.account_settings')</a>
                     </li>
                     <li>
-                        {{ Form::open(['route' => 'logout', 'method' => 'POST']) }}
-                            {{ Form::button(trans('partials/nav.log_out'), ['type' => 'submit', 'class' => 'logoutButton']) }}
-                        {{ Form::close() }}
+                        <a href="logout">@lang('partials/nav.log_out')</a>
                     </li>
                 </ul>
             </div>

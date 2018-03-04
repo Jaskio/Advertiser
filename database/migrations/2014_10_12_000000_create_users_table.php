@@ -28,7 +28,8 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('account_type')->default(1);
             $table->rememberToken();
             $table->string('token', 255)->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->softDeletes();
         });
     }

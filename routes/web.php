@@ -27,4 +27,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('profile/edit/{option?}/{id?}', 'AccountController@editAccount')->name('profile.edit');
     
     Route::resource('advertisement', 'AdvertisementController');
+    
+    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });

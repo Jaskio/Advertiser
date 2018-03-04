@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"main.js","sourcesContent":[]}
+{"version":3,"sources":["header.js"],"names":["userMenu","document","querySelector","classList","toggle"],"mappings":"AAAA,QAAAA,YACAC,SAAAC,cAAA,wBAEAC,UAAAC,OAAA","file":"main.js","sourcesContent":["function userMenu() {\r\n    var dropdown = document.querySelector('.headerProfile__list');\r\n\r\n    dropdown.classList.toggle('headerProfile__list--active');\r\n}"]}

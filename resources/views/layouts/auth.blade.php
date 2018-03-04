@@ -8,7 +8,6 @@
         @yield('content')
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}"></script>
         @include('partials.javascript')
 
     </body>
