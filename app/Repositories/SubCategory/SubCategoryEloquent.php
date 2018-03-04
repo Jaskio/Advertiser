@@ -36,11 +36,9 @@ class SubCategoryEloquent
      * @param array $ids  ids of specified sub_category
      * @return object
     */
-    public function get($ids) {
-        if ($ids) {
-            // $sub_category = $this->model->with('advertisements')->find($ids);
-
-            // return $sub_category;
+    public function get($id) {
+        if ($id) {
+            return $this->model->with('advertisements')->find($id);
         } else {
             // return $this->model->all();
         }

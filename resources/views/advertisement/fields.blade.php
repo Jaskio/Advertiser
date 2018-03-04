@@ -12,7 +12,7 @@
 </fieldset>
 <fieldset>
     <div>
-        <img src="{{ asset($ad->img_path) }}" alt="advertisement_image">
+        <img src="{{ asset($image_url) }}" alt="advertisement_image">
     </div>
     {{ Form::file('img_path', ['class' => 'form-control']) }}   
 
@@ -20,6 +20,6 @@
 
 </fieldset>
 <fieldset>
-    {{ Form::select('sub_category_id', $subcategories->pluck('title'), $ad->sub_category_id - 1, ['class' => 'form-control']) }}
+    {{ Form::select('sub_category_id', $subcategories->pluck('title'), $selected_subcategory, ['class' => 'form-control']) }}
 </fieldset>
 {{ Form::submit(trans('forms.account_save')) }}

@@ -22,9 +22,9 @@ class CreateAdvertisementsTable extends Migration
             
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
-            $table->string('price')->default('0.00');
-            $table->string('img_path');
+            $table->string('description')->default('');
+            $table->integer('price');
+            $table->string('img_path')->default('/uploads/advertisements/default.png');
             $table->integer('user_id');
             $table->integer('category_id');
             $table->integer('sub_category_id');

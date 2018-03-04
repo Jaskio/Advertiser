@@ -64,6 +64,10 @@ class AdvertisementEloquent
         return $this->model->where('id', $data['id'])->update($data);
     }
 
+    public function create($data) {
+        $this->model->create($data);
+    }
+
     // public function delete($id, $hardDelete = false) 
     // {   
     //     return $this->getModel()->where('id', $id)->delete();

@@ -25,8 +25,9 @@
                     <div>
                         {{ Form::open(['route' => ['advertisement.destroy', $ad->id], 'method' => 'DELETE']) }}
                             <h1>{{ $ad->title }}</h1> 
-                            <h2>{{ $ad->price }} $</h2>
-                            <h3>{{ $ad->description }}</h3>
+                            <div>
+                                <img src="{{ asset($ad->img_path) }}" alt="ad image">
+                            </div>
 
                             <a href="{{ route('advertisement.show', $ad->id) }}">show</a>
                             <a href="{{ route('profile.edit', ['ad', $ad->id]) }}">edit</a>
@@ -43,7 +44,15 @@
             @break
 
             @case('ad')
-                @include('advertisement.edit', ['index' => Request::segment(4) - 1])
+                @php
+                    $index = 0;
+                    foreach($user->advertisements as $key => $value) {
+                        if ($value->id == Request::segment(4)) {
+                            $index = $key;
+                        }
+                    }
+                @endphp
+                @include('advertisement.edit', ['index' => $index])
             @break
 
             @default

@@ -54,8 +54,7 @@ class AdvertisementsSeeder extends Seeder
                 'price' => '90',
                 'user_id' => 3,
                 'category_id' => 2,
-                'sub_category_id' => 2,
-                'img_path' => '/uploads/advertisements/image_04.jpg'
+                'sub_category_id' => 2
             ],
             [
                 'title' => 'Razer mouse',

@@ -31,7 +31,8 @@ class User extends Authenticatable
         'deleted_at',
         'updated_at',
         'created_at',
-        'token'
+        'token',
+        'password'
     ];
 
     /**

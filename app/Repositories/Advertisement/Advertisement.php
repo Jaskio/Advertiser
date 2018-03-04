@@ -51,8 +51,7 @@ class Advertisement extends Model
                 'title'            => 'required|string',
                 'description'      => 'max:200',
                 'price'            => 'required|integer',
-                'img_path'         => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'sub_category_id'  => 'required'
+                'img_path'         => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ];
     }
 

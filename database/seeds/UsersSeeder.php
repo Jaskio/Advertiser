@@ -24,7 +24,6 @@ class UsersSeeder extends Seeder
                 'full_name' => 'Jasmin Bektic',
                 'email' => 'jaskio@gmail.com',
                 'password' => bcrypt('000000'),
-                'avatar_path' => '',
                 'account_type' => 0
             ],
             [
@@ -38,19 +37,18 @@ class UsersSeeder extends Seeder
                 'full_name' => 'Margarita Tremlin',
                 'email' => 'margarita.t@gmail.com',
                 'password' => bcrypt('000000'),
-                'avatar_path' => '',
                 'account_type' => 1
-            ],[
+            ],
+            [
                 'full_name' => 'Sebastian Pawl',
                 'email' => 'sebastian.p@gmail.com',
                 'password' => bcrypt('000000'),
-                'avatar_path' => '',
                 'account_type' => 1
-            ],[
+            ],
+            [
                 'full_name' => 'Tom Taylor',
                 'email' => 'tom.t@gmail.com',
                 'password' => bcrypt('000000'),
-                'avatar_path' => '',
                 'account_type' => 1
             ]
         ];

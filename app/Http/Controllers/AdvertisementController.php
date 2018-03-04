@@ -84,21 +84,34 @@ class AdvertisementController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, $this->model->getModel()::userRules());
+        $this->validate($request, $this->model->getModel()::advertisementRules());
 
-        $id = Auth::user()->id;
-
-        $data = $request->only(['title',
+        $input = $request->only(['title',
                                 'description',
                                 'price',
-                                'img_path']);
-        $data['user_id'] = $id;
+                                'img_path',
+                                'sub_category_id']);
 
-        $this->model->create($data);
+        if ($request->hasFile('img_path')) {
+            $image = $request->file('img_path');
+            $fileName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME) . '_' . time() . '.' . $image->getClientOriginalExtension();
+    
+            $destinationPath = '/uploads/advertisements/';
+            $image->move(public_path($destinationPath), $fileName);
 
-        // $user = new AccountEloquent(new User);
-        // dd(json_encode($user->get($id)));
-        // return route('account.edit')->with('user', $user->get($id));
+            $input['img_path'] = $destinationPath . $fileName;
+        }
+
+        if(!$input['description']) {
+            unset($input['description']);
+        }
+        
+        $input['user_id'] = Auth::user()->id;
+        $input['sub_category_id'] = ++$input['sub_category_id'];
+        $input['category_id'] = $this->sub_category_model->get($input['sub_category_id'])->category_id;
+        $this->model->create($input);
+
+        return redirect()->route('profile.edit', 'adverts')->with('new_ad_success', trans('forms.new_ad_success'));
     }
 
     /**
