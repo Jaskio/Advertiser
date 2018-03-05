@@ -119,3 +119,68 @@
         }
     }
 }
+
+.login-input {
+    outline: none;
+    height: 28px;
+    line-height: 30px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 15px;
+}
+
+.login,
+.register {
+    position: relative;
+    top: 80px;
+    width: 250px;
+    margin: 0 auto;
+    background: lighten($font-color, 40%);
+    padding: 20px;
+    &__title {
+        display: flex;
+        justify-content: space-between;
+        font-size: $font-size-extra-large;
+        margin-bottom: 25px;
+        img {
+            height: $font-size-extra-large;
+        }
+    }
+    &__form {
+
+    }
+    &__formItem {
+        margin-bottom: 15px;
+    }
+    &__formInput {
+        input {
+            @extend .login-input;
+        }
+        span {
+            margin-top: 6px;
+            display: block;
+            color: $error-message;
+        }
+    }
+    &__formSubmitButton {
+        margin-bottom: 25px;
+        text-align: center;
+        button {
+            @extend .loginButton;
+        }
+    }
+    &__formRegisterLink,
+    &__formLoginLink {
+        text-align: center;
+        background: $content-bg;
+        padding: 12px 0;
+        p {
+            margin-bottom: 8px;
+        }
+        a {
+            text-decoration: underline;
+            color: $font-color-dark;
+        }
+    }
+}

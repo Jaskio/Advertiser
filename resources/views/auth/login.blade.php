@@ -1,68 +1,45 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">@lang('pages/login.login')</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+    <div class="login">
+        <div class="login__title">
+            <h2>@lang('pages/login.login')</h2>
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('assets/images/back.png') }}" alt="back">
+            </a>
+        </div>
+        <form class="login__form" method="POST" action="{{ route('login') }}">
+            {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">@lang('pages/login.email')</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">@lang('pages/login.password')</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>@lang('pages/login.remember_me')
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    @lang('pages/login.login_btn')
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    @lang('pages/login.forgot_password')
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+            <div class="login__formItem">
+                <label for="email">@lang('pages/login.email')</label>
+                <div class="login__formInput">
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
                 </div>
             </div>
-        </div>
+            <div class="login__formItem">
+                <label for="password">@lang('pages/login.password')</label>
+                <div class="login__formInput">
+                    <input id="password" type="password" name="password" required>
+                    <span>
+                        {{ $errors->first('email') }}
+                    </span>
+                    <span>
+                        {{ $errors->first('password') }}
+                    </span>
+                </div>
+            </div>
+            <div class="login__formSubmitButton">
+                <button type="submit">
+                    @lang('pages/login.login_btn')
+                </button>
+            </div>
+            <div class="login__formRegisterLink">
+                <p>Don't have an account yet?</p>
+                <a href="register">
+                    Register
+                </a>
+            </div>
+        </form>
     </div>
-</div>
 @endsection

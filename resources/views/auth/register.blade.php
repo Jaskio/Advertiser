@@ -1,76 +1,66 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">@lang('pages/register.register')</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+    <div class="register">
+        <div class="register__title">
+            <h2>@lang('pages/register.register')</h2>
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('assets/images/back.png') }}" alt="back">
+            </a>
+        </div>
+        <form class="register__form" method="POST" action="{{ route('register') }}">
+            {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">@lang('pages/register.name')</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">@lang('pages/register.email')</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">@lang('pages/register.password')</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">@lang('pages/register.confirm_password')</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    @lang('pages/register.register_btn')
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="register__formItem">
+                <label for="name">@lang('pages/register.name')</label>
+                <div class="register__formInput">
+                    <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
+                    @if ($errors->has('name'))
+                        <span>
+                            {{ $errors->first('name') }}
+                        </span>
+                    @endif
                 </div>
             </div>
-        </div>
+            <div class="register__formItem">
+                <label for="email">@lang('pages/register.email')</label>
+                <div class="register__formInput">
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required>
+                    @if ($errors->has('email'))
+                        <span>
+                            {{ $errors->first('email') }}
+                        </span>
+                    @endif
+                </div>
+            </div>
+            <div class="register__formInput">
+                <label for="password">@lang('pages/register.password')</label>
+                <div class="register__formItem">
+                    <input id="password" type="password" name="password" required>
+                    @if ($errors->has('password'))
+                        <span>
+                            {{ $errors->first('password') }}
+                        </span>
+                    @endif
+                </div>
+            </div>
+            <div class="register__formItem">
+                <label for="password-confirm">@lang('pages/register.confirm_password')</label>
+                <div class="register__formInput">
+                    <input id="password-confirm" type="password" name="password_confirmation" required>
+                </div>
+            </div>
+            <div clasS="register__formSubmitButton">
+                <button type="submit">
+                    @lang('pages/register.register_btn')
+                </button>
+            </div>
+            <div class="register__formLoginLink">
+                <p>Already have an account?</p>
+                <a href="login">
+                    Login
+                </a>
+            </div>
+        </form>
     </div>
-</div>
 @endsection

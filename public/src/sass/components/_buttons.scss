@@ -20,3 +20,11 @@
     color: $font-color-white;
     font-size: $font-size-base;
 }
+
+.loginButton {
+    @extend .button;
+    border: 1px solid $font-color;
+    padding: 7px 15px;
+    width: 35%;
+    color: $font-color;
+}
