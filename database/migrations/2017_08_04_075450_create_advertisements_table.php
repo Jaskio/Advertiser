@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 use App\Table;
+use Carbon\Carbon;
 
 class CreateAdvertisementsTable extends Migration
 {
@@ -28,8 +29,8 @@ class CreateAdvertisementsTable extends Migration
             $table->integer('user_id');
             $table->integer('category_id');
             $table->integer('sub_category_id');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->default(Carbon::now());
+            $table->timestamp('updated_at')->default(Carbon::now());
             $table->softDeletes();
         });
     }

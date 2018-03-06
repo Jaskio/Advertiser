@@ -41,7 +41,7 @@ class AdvertisementEloquent
         if ($id) {
             return $this->model->with('user')->findOrFail($id);
         } else {
-            return $this->model->paginate(Config::get('settings.pagination.limit'));
+            return $this->model->orderBy('created_at', 'desc')->paginate(Config::get('settings.pagination.limit'));
         }
     }
 

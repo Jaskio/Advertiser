@@ -23,32 +23,32 @@ class UsersSeeder extends Seeder
             [
                 'full_name' => 'Jasmin Bektic',
                 'email' => 'jaskio@gmail.com',
-                'password' => bcrypt('000000'),
+                'password' => bcrypt('111111'),
                 'account_type' => 0
             ],
             [
                 'full_name' => 'John Snow',
                 'email' => 'john.s@gmail.com',
-                'password' => bcrypt('000000'),
+                'password' => bcrypt('111111'),
                 'avatar_path' => '/uploads/avatar/john.jpg',
                 'account_type' => 1
             ],
             [
                 'full_name' => 'Margarita Tremlin',
                 'email' => 'margarita.t@gmail.com',
-                'password' => bcrypt('000000'),
+                'password' => bcrypt('111111'),
                 'account_type' => 1
             ],
             [
                 'full_name' => 'Sebastian Pawl',
                 'email' => 'sebastian.p@gmail.com',
-                'password' => bcrypt('000000'),
+                'password' => bcrypt('111111'),
                 'account_type' => 1
             ],
             [
                 'full_name' => 'Tom Taylor',
                 'email' => 'tom.t@gmail.com',
-                'password' => bcrypt('000000'),
+                'password' => bcrypt('111111'),
                 'account_type' => 1
             ]
         ];

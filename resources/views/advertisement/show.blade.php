@@ -4,7 +4,7 @@
     <div class="advert">
         <div class="advertItem">
             <div class="advert__back">
-                <a href="{{ url('home') }}">Back</a>
+                <a href="{{ url()->previous() }}">Back</a>
             </div>
             <div class="advert__title">
                 <h1>{{ $ad->title }} </h1>
