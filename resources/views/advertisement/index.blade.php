@@ -27,7 +27,7 @@
     </div>
 
     @else
-        <div>
+        <div class="content__noResult">
             No results!
         </div>
     @endif

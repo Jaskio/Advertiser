@@ -7,6 +7,13 @@
 .content {
     margin: $view-margin;
     width: 100%;
+    &__noResult {
+        text-align: center;
+        width: 100%;
+        position: relative;
+        top: 100px;
+        font-size: $font-size-extra-large;
+    }
 }
 
 .advertList {
@@ -182,5 +189,143 @@
             text-decoration: underline;
             color: $font-color-dark;
         }
+    }
+}
+
+.settings {
+    display: flex;
+    &__options {
+        width: 20%;
+        padding: 25px 0 25px 15px;
+        background: $settings-sidebar-bg;
+        height: 100%;
+        li {
+            font-size: $font-size-large;
+            margin-bottom: 10px;
+            padding: 7px 0;
+            a {
+                color: $font-color;
+            }
+        }
+    }
+    &__option--active {
+        background: $content-bg;
+        padding-left: 7px !important;
+    }
+    &__content {
+        width: 80%;
+        padding-left: 30px;
+    }
+    &__profile,
+    &__newAdvert {
+
+    }
+    &__profileItem,
+    &__newAdvertItem {
+        display: inline-block;
+        width: 49%;
+        vertical-align: top;
+        fieldset {
+            width: 60%;
+            margin-bottom: 10px;
+            input {
+                @extend .login-input;
+                height: 32px;
+                line-height: 32px;
+            }
+            textarea {
+                width: 100%;
+                box-sizing: border-box;
+                outline: none;
+                font-family: $font-roboto;
+                font-size: $font-size-base;
+                padding: 6px 10px;
+                font-size: 15px;
+            }
+            select {
+                width: 100%;
+                height: 32px;
+                outline: none;
+                color: $font-color;
+            }
+            span {
+                margin-top: 6px;
+                display: block;
+                color: $error-message;
+            }
+        }
+    }
+    &__profileImage,
+    &__newAdvertImage {
+        width: 50%;
+        height: 250px;
+        margin-bottom: 10px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 2px solid;
+            box-sizing: border-box;
+        }
+    }
+    &__profileUplaod,
+    &__newAdvertUpload {
+        display: inline-block;
+        width: 100%;
+        input {
+
+        }
+        span {
+
+        }
+    }
+    &__profileSubmitButton,
+    &__newAdvertSubmitButton {
+        margin-top: 15px;
+        input {
+            @extend .saveSettings;
+        }
+    }
+    &__adverts {
+
+    }
+    &__advert {
+        display: flex;
+        border-bottom: 1px solid;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+    }
+    &__advertItem {
+        width: 30%;
+        margin-right: 20px;
+        display: flex;
+        flex-flow: column;
+        h2 {
+            padding: 5px;
+            font-size: 18px;
+        }
+        a {
+            width: 100px;
+        }
+        button {
+            @extend .editSettings;
+            margin-bottom: 10px;
+        }
+    }
+    &__advertImage {
+        height: 300px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+    }
+    &__successMessage {
+        padding: 10px;
+        background: $success-message-bg;
+        color: $font-color-white;
+        text-align: center;
+        margin-bottom: 20px;
     }
 }

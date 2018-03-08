@@ -28,3 +28,19 @@
     width: 35%;
     color: $font-color;
 }
+
+.saveSettings {
+    @extend .button;
+    border: 1px solid $font-color;
+    padding: 7px 15px;
+    width: 20%;
+    color: $font-color;
+}
+
+.editSettings {
+    @extend .button;
+    background: $font-color;
+    padding: 8px 16px;
+    color: $font-color-white;
+    width: 100px;
+}

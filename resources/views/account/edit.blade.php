@@ -1,42 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>
-        <ul>
-            <li>
+    <div class="settings">
+        <ul class="settings__options">
+            <li class="{{ Request::is('profile/edit') ? 'settings__option--active' : '' }}">
                 <a href="{{ route('profile.edit') }}">
                     Profile
                 </a>
             </li>
-            <li>
+            <li class="{{ Request::is('profile/edit/adverts') ? 'settings__option--active' : '' }}">
                 <a href="{{ route('profile.edit', 'adverts') }}">
                     Adverts
                 </a>
             </li>
-            <li>
-                <a href="{{ route('profile.edit', 'create-new') }}">Create New</a>
+            <li class="{{ Request::is('profile/edit/create-new') ? 'settings__option--active' : '' }}">
+                <a href="{{ route('profile.edit', 'create-new') }}">
+                    Create New
+                </a>
             </li>
         </ul>
-
+        
+        <div class="settings__content">
+            @if(session()->has('success_message'))
+                <div class="settings__successMessage">
+                    {{ session()->get('success_message') }}
+                </div>
+            @endif
+        
         @switch( Request::segment(3) )
 
             @case('adverts')
-                @foreach ($user->advertisements as $ad)
-                    <div>
-                        {{ Form::open(['route' => ['advertisement.destroy', $ad->id], 'method' => 'DELETE']) }}
-                            <h1>{{ $ad->title }}</h1> 
-                            <div>
-                                <img src="{{ asset($ad->img_path) }}" alt="ad image">
+                <div class="settings__adverts">
+                    @foreach ($user->advertisements as $ad)
+                        {{ Form::open(['route' => ['advertisement.destroy', $ad->id], 'class' => 'settings__advert', 'method' => 'DELETE']) }}
+                            <div class="settings__advertItem">
+                                <h2>{{ $ad->title }}</h2> 
+                                <div class="settings__advertImage">
+                                    <img src="{{ asset($ad->img_path) }}" alt="ad image">
+                                </div>
                             </div>
-
-                            <a href="{{ route('advertisement.show', $ad->id) }}">show</a>
-                            <a href="{{ route('profile.edit', ['ad', $ad->id]) }}">edit</a>
-                            {{ Form::button('delete', ['type' => 'submit']) }}
-
+                            <div class="settings__advertItem">
+                                <a href="{{ route('advertisement.show', $ad->id) }}">
+                                    <button type='button'>Public view</button>
+                                </a>
+                                <a href="{{ route('profile.edit', ['ad', $ad->id]) }}">
+                                    <button type='button'>Edit</button>
+                                </a>
+                                {{ Form::button('delete', ['type' => 'submit']) }}
+                            </div>
                         {{ Form::close() }}
-                    </div>
-                    <hr>
-                @endforeach
+                    @endforeach
+                </div>
             @break
 
             @case('create-new')
@@ -58,42 +72,53 @@
             @default
             {{ Request::segment(3) }}
 
-                {{ Form::model($user, ['route' => ['account.update', $user->id], 'method' => 'PUT', 'files' => true]) }}
-                    {{ Form::text('full_name', null) }}
-                    
-                        {{$errors->first('full_name')}}
-                    
+                {{ Form::model($user, ['route' => ['account.update', $user->id], 'method' => 'PUT', 'files' => true, 'class' => 'settings__profile']) }}
 
-                    {{ Form::email('email', null, ['class' => 'form-control', 'pattern'=>'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$']) }}
-                    
-                        {{$errors->first('email')}}
-                    
+                    <div class="settings__profileItem">
+                        <fieldset>
+                            {{ Form::text('full_name', null, ['placeholder' => 'Name']) }}
+                                <span>
+                                    {{$errors->first('full_name')}}
+                                </span>
+                        </fieldset>
+                        
+                        <fieldset>
+                            {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email', 'pattern'=>'[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$']) }}
+                                <span>
+                                    {{$errors->first('email')}}
+                                </span>
+                        </fieldset>
 
-                    {{ Form::password('password',  ['class'=>'form-control', 'placeholder'=>'Change password']) }}
+                        <fieldset>
+                            {{ Form::password('password',  ['class'=>'form-control', 'placeholder'=>'Change password']) }}
+                                <span>
+                                    {{$errors->first('password')}}
+                                </span>
+                        </fieldset>
+                    </div>
+
                     
-                        {{$errors->first('password')}}
-                   
-                    <fieldset>
-                        <div>
+                    <div class="settings__profileItem">
+                        <div class="settings__profileImage">
                             <img src="{{ asset($user->avatar_path) }}" alt="avatar">
                         </div>
-                        {{ Form::file('avatar_path', ['class' => 'form-control']) }}   
-
-                            {{$errors->first('avatar_path')}}
-                    </fieldset>
-                
-                    {{ Form::submit(trans('forms.account_save')) }}
-                {{ Form::close() }}
-                <div>
-                    @if(session()->has('success_message'))
-                        <div>
-                            {{ session()->get('success_message') }}
+                        <div class="setings__profileUpload">
+                            {{ Form::file('avatar_path', ['class' => '']) }}   
+                                <span>
+                                    {{$errors->first('avatar_path')}}
+                                </span>
                         </div>
-                    @endif
-                </div>
+                    </div>
+
+                    <div class="settings__profileSubmitButton">
+                        {{ Form::submit(trans('forms.account_save')) }}
+                    </div>
+                
+                {{ Form::close() }}
             @break
        
         @endswitch
+        </div>
 
     </div>
 
