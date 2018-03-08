@@ -31,25 +31,13 @@ class AccountController extends Controller
     }
 
     /**
-     * Display a listing of users.
-     *
-     * @return \Illuminate\Http\Response
-    */
-    public function index() {
-        // $users = $this->getUsers();
-        // $u = DB::table('users')->where('name', 'like', 'Ja%')->get();
-        // $test = DB::table('users')->leftJoin('test', 'users.id', '=', 'test.id')->get();
-        // return view('home')->with('users', $u);
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        dd('create account');
+        //
     }
 
     /**
@@ -60,11 +48,7 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->only(['full_name']));
-        dd($this->validate($request, [
-            'full_name' => 'required|max:255'
-            ])
-        );
+        //
     }
 
     /**
@@ -140,8 +124,6 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        var_dump($id); die;
-        $this->model->delete($id);
-        return redirect('/');
+        //
     }
 }

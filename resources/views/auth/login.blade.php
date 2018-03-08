@@ -35,9 +35,9 @@
                 </button>
             </div>
             <div class="login__formRegisterLink">
-                <p>Don't have an account yet?</p>
+                <p>@lang('pages/login.question')</p>
                 <a href="register">
-                    Register
+                @lang('pages/login.register_link')
                 </a>
             </div>
         </form>

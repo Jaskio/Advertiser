@@ -39,8 +39,6 @@ class SubCategoryEloquent
     public function get($id) {
         if ($id) {
             return $this->model->with('advertisements')->find($id);
-        } else {
-            // return $this->model->all();
         }
     }
 }

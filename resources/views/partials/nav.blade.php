@@ -31,7 +31,7 @@
                         <a href="{{ route('profile.edit') }}">@lang('partials/nav.account_settings')</a>
                     </li>
                     <li>
-                        <a href="logout">@lang('partials/nav.log_out')</a>
+                        <a href="{{ url('logout') }}">@lang('partials/nav.log_out')</a>
                     </li>
                 </ul>
             </div>

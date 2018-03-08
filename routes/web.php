@@ -21,7 +21,6 @@ Route::group(['prefix' => 'advertisement'], function() {
     Route::post('filter', 'AdvertisementController@filter')->name('advertisement.filter');
 });
 
-
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('account', 'AccountController');
     Route::get('profile/edit/{option?}/{id?}', 'AccountController@editAccount')->name('profile.edit');

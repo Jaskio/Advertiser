@@ -60,8 +60,6 @@ class AdvertisementController extends Controller
     public function index()
     {
         $ads = $this->model->get();
-
-        // dd($this->category_model->get(NULL)); die;
         return view('advertisement.index')->with('ads', $ads)
                                           ->with('categories', $this->category_model->get());
     }
@@ -112,7 +110,7 @@ class AdvertisementController extends Controller
 
         $this->model->create($input);
 
-        return redirect()->route('profile.edit', 'adverts')->with('new_ad_success', trans('forms.new_ad_success'));
+        return redirect()->route('profile.edit', 'adverts')->with('new_ad_success', trans('content.settings_newAdd'));
     }
 
     /**
@@ -123,9 +121,7 @@ class AdvertisementController extends Controller
      */
     public function show($id)
     {
-        // $id = decrypt($id);
         $ad = $this->model->get($id);
-        
         return view('advertisement.show')->with('ad', $ad)
                                          ->with('categories', $this->category_model->get());
     }
@@ -139,7 +135,6 @@ class AdvertisementController extends Controller
     public function edit($id)
     {
         $ad = $this->model->get($id);
-        
         return view('advertisement.edit')->with('ad', $ad)
                                          ->with('categories', $this->category_model->get());
     }
@@ -175,7 +170,7 @@ class AdvertisementController extends Controller
         $input['sub_category_id'] = ++$input['sub_category_id'];
         $this->model->update($input);
 
-        return redirect()->back()->with('success_message', trans('forms.success_message'));
+        return redirect()->back()->with('success_message', trans('content.settings_successMessage'));
     }
 
     /**

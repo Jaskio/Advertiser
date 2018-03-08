@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="advertList">
-    
+        
     @if ( $ads->isNotEmpty() )
         @foreach ($ads as $ad)
             <div class="advertList__item">
@@ -20,15 +20,21 @@
     </div>
     <div class="pagination">
         <div class="paginationPages">
-            <a href="{{ $ads->previousPageUrl() }}">@lang('pagination.previous')</a>
-            <span>Page {{ $ads->currentPage() }} of {{ $ads->lastPage() }}</span>
-            <a href="{{ $ads->nextPageUrl() }}">@lang('pagination.next')</a>
+            <a href="{{ $ads->previousPageUrl() }}">
+                @lang('pagination.previous')
+            </a>
+            <span>
+                @lang('pagination.paging', ['from' => $ads->currentPage(), 'to' => $ads->lastPage()])
+            </span>
+            <a href="{{ $ads->nextPageUrl() }}">
+                @lang('pagination.next')
+            </a>
         </div>
     </div>
 
     @else
         <div class="content__noResult">
-            No results!
+            @lang('content.home_noResults')
         </div>
     @endif
         

@@ -15,5 +15,5 @@ return [
 
     'previous' => '<',
     'next' => '>',
-
+    'paging' => 'Page :from of :to',
 ];

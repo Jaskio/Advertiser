@@ -39,28 +39,7 @@ class AccountEloquent implements IAccount
      * @return object
     */
     public function get($id = NULL) {
-        $user = $this->model->with('advertisements')->findOrFail($id);
-        
-        return $user;
-
-        // return $this->model
-        //         ->leftJoin(
-        //             Table::USERS,
-        //             Table::ADVERTISEMENTS . '.advertiser_id',
-        //             '=',
-        //             Table::USERS . '.id')
-        //         ->select(
-        //             Table::USERS . '.id',
-        //             Table::USERS . '.name',
-        //             Table::USERS . '.email',
-        //             Table::USERS . '.password',
-        //             Table::ADVERTISEMENTS . '.id AS user_id',              
-        //             Table::ADVERTISEMENTS . '.title',              
-        //             Table::ADVERTISEMENTS . '.description',              
-        //             Table::ADVERTISEMENTS . '.price',              
-        //             Table::ADVERTISEMENTS . '.img_path')
-        //         ->where(Table::USERS . '.id', $id)                    
-        //         ->get();
+        return $this->model->with('advertisements')->findOrFail($id);
     }
 
     /**

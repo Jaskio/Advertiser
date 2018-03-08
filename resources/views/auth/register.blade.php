@@ -56,9 +56,9 @@
                 </button>
             </div>
             <div class="register__formLoginLink">
-                <p>Already have an account?</p>
+                <p>@lang('pages/register.question')</p>
                 <a href="login">
-                    Login
+                    @lang('pages/register.login_link')
                 </a>
             </div>
         </form>

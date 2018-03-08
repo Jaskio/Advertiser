@@ -1,24 +1,24 @@
 <div class="settings__newAdvertItem">
     <fieldset>
-        {{ Form::text('title', null, ['placeholder' => 'Title']) }}
+        {{ Form::text('title', null, ['placeholder' => trans('content.settings_input_title')]) }}
             <span>
                 {{$errors->first('title')}}
             </span>
     </fieldset>
     <fieldset>
-        {{ Form::textarea('description', null, ['placeholder' => 'Description']) }}
+        {{ Form::textarea('description', null, ['placeholder' => trans('content.settings_input_desc')]) }}
             <span>
                 {{$errors->first('description')}}
             </span>
     </fieldset>
     <fieldset>
-        {{ Form::text('price', null, ['placeholder' => 'Price']) }}
+        {{ Form::text('price', null, ['placeholder' => trans('content.settings_input_price')]) }}
         <span>
             {{$errors->first('price')}}
         </span>
     </fieldset>
     <fieldset>
-        {{ Form::select('sub_category_id', $subcategories->pluck('title'), $selected_subcategory, ['class' => 'form-control']) }}
+        {{ Form::select('sub_category_id', $subcategories->pluck('title'), $selected_subcategory) }}
     </fieldset>
 </div>
 <div class="settings__newAdvertItem">
@@ -26,7 +26,7 @@
         <img src="{{ asset($image_url) }}" alt="advertisement_image">
     </div>
     <div class="settings__newAdvertUpload">
-        {{ Form::file('img_path', ['class' => 'form-control']) }}   
+        {{ Form::file('img_path') }}   
             <span>
                 {{$errors->first('img_path')}}
             </span>
@@ -34,5 +34,5 @@
 </div>
 
 <div class="settings__newAdvertSubmitButton">
-    {{ Form::submit(trans('forms.account_save')) }}
+    {{ Form::submit(trans('content.settings_saveButton')) }}
 </div>
