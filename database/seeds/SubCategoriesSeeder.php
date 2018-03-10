@@ -46,6 +46,10 @@ class SubCategoriesSeeder extends Seeder
             [
                 'title' => 'Drums',
                 'category_id' => 4
+            ],
+            [
+                'title' => 'Mobiles',
+                'category_id' => 3
             ]
         ];
     }

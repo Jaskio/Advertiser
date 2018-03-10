@@ -29,14 +29,14 @@ class UsersSeeder extends Seeder
             [
                 'full_name' => 'John Snow',
                 'email' => 'john.s@gmail.com',
-                'password' => bcrypt('111111'),
+                'password' => bcrypt('johny1'),
                 'avatar_path' => '/uploads/avatar/john.jpg',
                 'account_type' => 1
             ],
             [
                 'full_name' => 'Margarita Tremlin',
                 'email' => 'margarita.t@gmail.com',
-                'password' => bcrypt('111111'),
+                'password' => bcrypt('margarita1'),
                 'account_type' => 1
             ],
             [
